@@ -1,0 +1,35 @@
+<?php
+use SpatialMatchIdx\core\helpers\URLHelper;
+?>
+
+<div id="hji-spm-idx__" aria-labelledby="<?php  ?>">
+        <h3>New Lead</h3>
+        <p>
+            <a href="<?php echo URLHelper::getLinkWithParams(['page']);?>">← Back to Users</a>
+        </p>
+        <form method="post" action="<?php echo URLHelper::getLinkWithParams(['page'], ['action' => 'create-lead']);?>">
+            <input type="hidden" name="_referer" value="<?php echo $_REQUEST['_referer'] ?? $_SERVER['HTTP_REFERER'] ?? ''?>">
+            <?php wp_nonce_field(); ?>
+            <table class="form-table">
+                <tbody>
+                    <tr>
+                        <th scope="row"><label>Name</label></th>
+                        <td><input type="text" name="user[name]" value="" class="regular-text"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label>Email</label></th>
+                        <td><input type="text" name="user[email]" value="" class="regular-text"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label>Phone</label></th>
+                        <td><input type="text" name="user[phone]" value="" class="regular-text"></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">
+                            <input type="submit" class="button button-primary" value="Save Changes">
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+</div>

@@ -1,0 +1,143 @@
+<div id="hji-spm-idx__<?php echo $context['slug'] ?>-tp" aria-labelledby="<?php  ?>" class="hji-spm-idx__tab-panel <?php echo $context['class']; ?>">
+    <form id="hji-spm-idx__form-<?php echo $context['slug']; ?>" method="post" action="<?php echo home_url('wp-admin/admin.php?page=hji-spatialmatch-idx&action=save-color-settings');?>">
+        <?php wp_nonce_field(); ?>
+        <div id="map-search-block">
+                <h2>Colors</h2>
+            <div class="generate-spatial-match-colors-block">
+                <a href="<?php echo home_url('wp-admin/admin.php?page=hji-spatialmatch-idx&action=reset-color-settings');?>" class="generate-spatial-match-colors-button button button-secondary">Restore Default</a>
+                <!--                                <input type="reset" id="hji-spm-idx__reset-default" name="--><?php //echo $context['slug']; ?><!--[reset_default]" class="generate-spatial-match-colors-button button button-secondary" value="Restore Default">-->
+            </div>
+            <h3>Primary</h3>
+            <table class="bordered-table form-table">
+                <tbody>
+                <tr>
+                    <th scope="row"><label for="hji-spm-idx__primary-color">Background</label></th>
+                    <td>
+                        <div style="width:300px;display: inline-block;">
+                            <input id="hji-spm-idx__primary-color" type="text" class="regular-text color-primary hji-spm-idx__color" data-color="main-color" name="<?php echo $context['slug']; ?>[primary_color]" value="<?php  echo $context['data']['primary_color']; ?>"/>
+                            <input id="hji-spm-idx__primary-color-fake" type="hidden" name="<?php echo $context['slug']; ?>[primary_color_fake]" value="<?php  echo $context['data']['primary_color']; ?>" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <label for="hji-spm-idx__primary-font">Foreground Text</label>
+                    </th>
+                    <td>
+                        <div style="width:300px;display: inline-block;">
+                            <input id="hji-spm-idx__primary-font" type="text" class="regular-text hji-spm-idx__color " name="<?php echo $context['slug']; ?>[primary_font]" value="<?php echo $context['data']['primary_font']; ?>" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <label for="hji-spm-idx__primary-contrast">Controls/Links</label>
+                    </th>
+                    <td>
+                        <div style="width:300px;display: inline-block;">
+                            <input id="hji-spm-idx__primary-contrast" type="text" class="regular-text hji-spm-idx__color color-primary-contrast" name="<?php echo $context['slug']; ?>[primary_link]" value="<?php echo $context['data']['primary_link']; ?>" >
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h3>Secondary</h3>
+            <table class="bordered-table form-table">
+                <tbody>
+                <tr>
+                    <th scope="row">
+                        <label for="hji-spm-idx__secondary-color">Background</label>
+                    </th>
+                    <td>
+                        <input id="hji-spm-idx__secondary-color" type="text" class="regular-text color-secondary hji-spm-idx__color" data-color="main-color" name="<?php echo $context['slug']; ?>[secondary_color]" value="<?php echo $context['data']['secondary_color']; ?>"/>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <label for="hji-spm-idx__secondary-font-color">Foreground Text</label>
+                    </th>
+                    <td>
+                        <input id="hji-spm-idx__secondary-font-color" type="text" class="regular-text hji-spm-idx__color color-secondary" data-color="main-color" data-pc="color-secondary" name="<?php echo $context['slug']; ?>[secondary_font]" value="<?php echo $context['data']['secondary_font']; ?>"/>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <label for="hji-spm-idx__secondary-link-color">Links</label>
+                    </th>
+                    <td>
+                        <input id="hji-spm-idx__secondary-link-color" type="text" class="regular-text hji-spm-idx__color color-secondary" data-color="main-color" data-pc="color-secondary" name="<?php echo $context['slug']; ?>[secondary_link]" value="<?php echo $context['data']['secondary_link']; ?>"/>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h3>Hover</h3>
+            <table class="bordered-table form-table">
+                <tbody>
+                <tr>
+                    <th scope="row">
+                        <label for="hji-spm-idx__hover-bg-color">Background</label>
+                    </th>
+                    <td>
+                        <input id="hji-spm-idx__hover-bg-color" type="text" class="regular-text hji-spm-idx__color" data-color="main-color" name="<?php echo $context['slug']; ?>[hover_bg]" value="<?php echo $context['data']['hover_bg']; ?>"/>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <label for="hji-spm-idx__hover-font-color">Foreground</label>
+                    </th>
+                    <td>
+                        <input id="hji-spm-idx__hover-font-color" type="text" class="regular-text hji-spm-idx__color" name="<?php echo $context['slug']; ?>[hover_font]" value="<?php echo $context['data']['hover_font']; ?>"/>
+                    </td>
+                </tr>
+                </tbody>
+                <tbody>
+            </table>
+
+            <h3>Menu</h3>
+            <table class="bordered-table form-table">
+                <tbody>
+                <tr>
+                    <th scope="row">
+                        <label for="hji-spm-idx__menu-color-bg">Background</label>
+                    </th>
+                    <td>
+                        <input id="hji-spm-idx__menu-color-bg" type="text" class="regular-text hji-spm-idx__color" data-color="main-color" name="<?php echo $context['slug']; ?>[menu_bg]" value="<?php echo $context['data']['menu_bg']; ?>"/>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <label for="hji-spm-idx__menu-font-color">Foreground</label>
+                    </th>
+                    <td>
+                        <input id="hji-spm-idx__menu-font-color" type="text" class="regular-text hji-spm-idx__color" name="<?php echo $context['slug']; ?>[menu_font]" value="<?php echo $context['data']['menu_font']; ?>"/>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <h3>Markers</h3>
+            <table class="bordered-table form-table">
+                <tbody>
+                <tr>
+                    <th scope="row">
+                        <label for="hji-spm-idx__marker-active">Active</label>
+                    </th>
+                    <td>
+                        <input type="text" id="hji-spm-idx__marker-active" class="regular-text hji-spm-idx__color" name="<?php echo $context['slug']; ?>[marker_active]" value="<?php echo $context['data']['marker_active']; ?>"/>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <label for="hji-spm-idx__marker-other">Other</label>
+                    </th>
+                    <td>
+                        <input type="text" id="hji-spm-idx__marker-other" class="regular-text hji-spm-idx__color" name="<?php echo $context['slug']; ?>[marker_other]" value="<?php echo $context['data']['marker_other']; ?>"/>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <button type="submit" class="button button-primary">Save Changes</button>
+    </form>
+</div>

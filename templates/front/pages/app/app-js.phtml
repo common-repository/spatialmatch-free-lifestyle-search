@@ -1,0 +1,378 @@
+<script>
+    function hj_search_load_callback(hj) {
+        var ajaxUrl = '<?php echo admin_url('admin-ajax.php');?>',
+            options = <?php echo wp_json_encode($options, JSON_UNESCAPED_SLASHES); ?>,
+            notificationPosition = 'toast-bottom-right',
+            crmIntegration,
+            vendorMetrics,
+            HJI = window.HJI || {};
+
+        hj.init(options);
+
+        hj.on('ready', function () {
+            loadCustomScripts();
+
+            if (crmIntegration) {
+                hj.app.login(crmIntegration.options.uid);
+            }
+            vendorMetrics = hjEventHandler.vendorMetrics();
+        });
+
+        hj.on('submit.contact_form', function (formData, listing) {
+            formData.listing = JSON.stringify(listing);
+            hjEventHandler.submitContactForm(formData);
+            if (vendorMetrics) {
+                vendorMetrics.trackEvent('listingInquiry', listing);
+            }
+        });
+
+        hj.on('user.logged', function (user) {
+            const loginEvent = new CustomEvent('hji-users/login', {detail: {user: user}});
+            document.dispatchEvent(loginEvent);
+
+            hjEventHandler.handleUserLogin(user);
+        });
+
+        hj.on('user.registration', function (user) {
+            const registrationEvent = new CustomEvent('hji-users/registration', {detail: {user: user}});
+            document.dispatchEvent(registrationEvent);
+
+            hjEventHandler.handleUserRegistration(user);
+        });
+
+        hj.on('search.success', function (response) {
+            if (options.hasOwnProperty('crm')) {
+                generateShortUrl();
+            }
+        });
+
+        hj.on('listing.viewed', function (listing) {
+            if (vendorMetrics) {
+                vendorMetrics.trackEvent('listingView', listing);
+            }
+        });
+
+        hj.on('listing.saved', function (listing) {
+            if (vendorMetrics) {
+                vendorMetrics.trackEvent('listingFavorite', listing);
+            }
+        });
+
+        var hjEventHandler = {
+            submitContactForm: function (formData) {
+                var that = this;
+
+                hj.notification.Add({
+                    title: 'Sending...',
+                    msg: '',
+                    timeout: 2000,
+                    position: notificationPosition,
+                    type: 'info'
+                });
+
+                util.ajax.postToWP('handleContactFormSubmission', formData, function (data) {
+                    if (data.hasOwnProperty('user') && (typeof data.user == "object")) {
+                        if (!hj.app.isLogged()) {
+                            that.signUserIn(data.user);
+                        }
+
+                        var options = {
+                            msg: 'Thanks! We\'ll get back to you shortly.',
+                            timeout: 3000,
+                            position: notificationPosition,
+                            type: 'success'
+                        };
+                        hj.notification.Add(options);
+                        return;
+                    }
+
+                    if (data.hasOwnProperty('success') && data.success === false) {
+                        var options = {
+                            msg: data.message || 'Please contact us via our contact page.',
+                            timeout: 0,
+                            position: notificationPosition,
+                            type: 'error'
+                        };
+                        hj.notification.Add(options);
+                    }
+
+                });
+            },
+
+            handleUserLogin: function (user) {
+                util.ajax.postToWP('handleUserLogin', {email: user.email});
+            },
+
+            handleUserRegistration: function (user) {
+                util.ajax.postToWP('handleUserRegistration', {email: user.email});
+            },
+
+            signUserIn: function (user) {
+                localStorage.setItem('user', JSON.stringify({value: user, expire: null}));
+                hj.app.logged(user);
+            },
+
+            vendorMetrics: function () {
+                if (vendorMetrics)
+                    return vendorMetrics;
+
+                vendorMetrics = (function () {
+                    if (HJI.hasOwnProperty('vendorMetrics')) {
+                        return HJI.vendorMetrics(options.market);
+                    }
+                    return false;
+                })();
+
+                return vendorMetrics;
+            }
+        };
+
+
+        crmIntegration = (function () {
+            if (!options.hasOwnProperty('crm')) return false;
+
+            var _options = options.crm;
+
+            var renderEmailBtn = function () {
+                var elI = document.createElement('i');
+                elI.className = "fa fa-envelope-o";
+
+                var emailBtn = document.createElement('button');
+                emailBtn.className = "btn btn-primary btn-shadow btn-email-search";
+                emailBtn.appendChild(elI);
+                emailBtn.appendChild(document.createTextNode("Email Search"));
+                emailBtn.style.position = 'fixed';
+                emailBtn.style.top = '10px';
+                emailBtn.style.right = '10px';
+
+                emailBtn.onclick = function () {
+                    copySearchUrlToClipboard();
+                    openEmailClient();
+                };
+
+                var h = document.getElementById('header');
+                h.appendChild(emailBtn);
+
+                return emailBtn;
+            };
+
+            var openEmailClient = function () {
+                var url = 'https://hjicrm.zohoplatform.com/crm/EntReply.do?action=compose&entId='
+                    + _options.cid
+                    + '&module=' + _options.module
+                    + '&entEmail=';
+                window.open(url, '_blank', "top=100,left=100,width=1335,height=610");
+            };
+
+            return {
+                options: _options,
+                emailBtn: renderEmailBtn(),
+                openEmailClient: function () {
+                    return openEmailClient();
+                }
+            };
+        })();
+
+        var util =
+            {
+                ajax:
+                    {
+                        post: function (url, params, callback, headers) {
+                            var http = new XMLHttpRequest();
+
+                            http.open("POST", url, true);
+
+                            if (typeof headers === 'object') {
+                                for (var i in headers) {
+                                    if ((typeof i === 'string') && (typeof headers[i] === 'string')) {
+                                        http.setRequestHeader(i, headers[i]);
+                                    }
+                                }
+                            } else {
+                                http.setRequestHeader("Accept", "application/json, text/javascript, */*; q=0.01");
+                                http.setRequestHeader("Content-Type", "application/json");
+                            }
+
+                            http.onreadystatechange = function () {
+                                if (http.readyState == 4 && http.status == 200) {
+                                    if (typeof callback == "function") {
+                                        callback(JSON.parse(http.responseText));
+                                    }
+                                }
+                            };
+
+                            if (typeof param === "object") {
+                                http.send(JSON.stringify(params));
+                            } else {
+                                http.send(params);
+                            }
+                        },
+
+                        postToWP: function (action, data, callback) {
+                            var obj = {
+                                    action: action,
+                                    data: data
+                                },
+                                headers = {
+                                    "Accept": "application/json, text/javascript, */*; q=0.01",
+                                    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+                                };
+
+                            try {
+                                var params = util.toQueryString(obj);
+                                console.log(params);
+                                util.ajax.post(ajaxUrl, params, callback, headers);
+                            } catch (err) {
+                                console.error(err.message);
+                            }
+                        }
+                    },
+
+                toQueryString: function (a) {
+                    var s = [], rbracket = /\[\]$/,
+                        isArray = function (obj) {
+                            return Object.prototype.toString.call(obj) === '[object Array]';
+                        }, add = function (k, v) {
+                            v = typeof v === 'function' ? v() : v === null ? '' : v === undefined ? '' : v;
+                            s[s.length] = encodeURIComponent(k) + '=' + encodeURIComponent(v);
+                        }, buildParams = function (prefix, obj) {
+                            var i, len, key;
+
+                            if (prefix) {
+                                if (isArray(obj)) {
+                                    for (i = 0, len = obj.length; i < len; i++) {
+                                        if (rbracket.test(prefix)) {
+                                            add(prefix, obj[i]);
+                                        } else {
+                                            buildParams(prefix + '[' + (typeof obj[i] === 'object' ? i : '') + ']', obj[i]);
+                                        }
+                                    }
+                                } else if (obj && String(obj) === '[object Object]') {
+                                    for (key in obj) {
+                                        buildParams(prefix + '[' + key + ']', obj[key]);
+                                    }
+                                } else {
+                                    add(prefix, obj);
+                                }
+                            } else if (isArray(obj)) {
+                                for (i = 0, len = obj.length; i < len; i++) {
+                                    add(obj[i].name, obj[i].value);
+                                }
+                            } else {
+                                for (key in obj) {
+                                    buildParams(key, obj[key]);
+                                }
+                            }
+                            return s;
+                        };
+
+                    return buildParams('', a).join('&').replace(/%20/g, '+');
+                },
+
+                debounce: function (func, wait, immediate) {
+                    var timeout;
+                    return function () {
+                        var context = this, args = arguments;
+                        var later = function () {
+                            timeout = null;
+                            if (!immediate) func.apply(context, args);
+                        };
+                        var callNow = immediate && !timeout;
+                        clearTimeout(timeout);
+                        timeout = setTimeout(later, wait);
+                        if (callNow) func.apply(context, args);
+                    };
+                }
+            };
+
+        var copySearchUrlToClipboard = function () {
+            var btn = document.createElement('button');
+            var clipboard = new Clipboard(btn, {
+                text: function () {
+                    return currentUrlGetter.getLastShortUrl();
+                }
+            });
+
+            clipboard.on('success', function (e) {
+                hj.notification.Add({
+                    title: 'Search URL is copied to the Clipboard',
+                    msg: '',
+                    timeout: 10000,
+                    position: 'toast-top-right',
+                    type: 'success',
+                    clickClose: true
+                });
+
+                e.clearSelection();
+            });
+
+            btn.click();
+        };
+
+        var currentUrlGetter = {
+            cache: {
+                shortUrl: null
+            },
+            getUrl: function () {
+                var url = window.location.href;
+                var getAppQuery = function () {
+                    var urlParts = url.split('#');
+                    var query = '#' + decodeURIComponent(urlParts[1]);
+                    var queryParts = query.split('?');
+
+                    function parseQuery(qstr) {
+                        var query = {};
+                        var a = (qstr[0] === '?' ? qstr.substr(1) : qstr).split('&');
+                        for (var i = 0; i < a.length; i++) {
+                            var b = a[i].split('=');
+                            query[decodeURIComponent(b[0])] = decodeURIComponent(b[1] || '');
+                        }
+                        return query;
+                    }
+
+                    var queryObj = parseQuery(queryParts[1]);
+
+                    return queryParts[0] + '?' + util.toQueryString(queryObj);
+                };
+
+                var getBaseUrl = function () {
+                    var urlParts = url.split('?');
+                    return urlParts[0];
+                };
+
+                return getBaseUrl() + getAppQuery();
+            },
+            shortenUrl: function (url, callback) {
+                if (!options.hasOwnProperty('googleApiKey') || !options.googleApiKey) {
+                    console.error('URL Shortening failed. Google API Key is not provided.');
+                    return false;
+                }
+
+                var serviceUrl = 'https://www.googleapis.com/urlshortener/v1/url?key=' + options.googleApiKey,
+                    obj = {longUrl: url};
+
+                util.ajax.post(serviceUrl, obj, function (response) {
+                    if (response.hasOwnProperty('id') && (typeof callback === "function")) {
+                        callback(response.id);
+                    }
+                });
+
+                return false;
+            },
+            getLastShortUrl: function () {
+                return this.cache.shortUrl;
+            }
+        };
+
+        var generateShortUrl = util.debounce(function () {
+            currentUrlGetter.shortenUrl(currentUrlGetter.getUrl(), function (shortUrl) {
+                currentUrlGetter.cache.shortUrl = (shortUrl !== false) ? shortUrl : false;
+            });
+        }, 2000);
+
+        var loadCustomScripts = function () {
+            if (typeof smCustom === 'function')
+                smCustom(hj);
+        }
+    }
+</script>

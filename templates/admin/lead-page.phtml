@@ -1,0 +1,53 @@
+<div class="hji-spatialmatch-idx__license-registration-page hji-spatialmatch-idx__page wrap">
+    <header class="hji-spm-idx__header">
+        <div class="hji-spm-idx__page-title">
+            <?php use SpatialMatchIdx\core\helpers\DateTimeHelper;
+
+            if (!empty($data['lead']['attributes'])):
+                $attributes = json_decode($data['lead']['attributes'], true);
+
+                if (isset($attributes['Profile']['photo'])):
+            ?>
+                <div class="lead-photo" style="background-image: url(<?php echo $attributes['Profile']['photo'] ?>)"></div>
+            <?php
+                endif;
+            endif;
+            ?>
+            <input type="hidden" id="userId" value="<?php echo $data['lead']['id']; ?>">
+            <h1>Lead <?php echo $data['lead']['name']; ?> Details - SpatialMatch IDX</h1>
+            <h2><i class="dashicons dashicons-email"></i> <?php echo $data['lead']['email']; ?></h2>
+            <?php if (!empty($data['lead']['phone'])): ?>
+            <h3><i class="dashicons dashicons-smartphone"></i>  <?php echo $data['lead']['phone']; ?></h3>
+            <?php endif; ?>
+            <a href="<?php echo \SpatialMatchIdx\core\helpers\URLHelper::getLinkWithParams(['page'])?>">← Back to Leads List</a>
+        </div>
+        <a href="#">
+            <img src="<?php echo SPATIALMATCH_IDX_URL; ?>assets/img/logo.png" height="60px" alt="">
+        </a>
+    </header>
+    <div class="container">
+        <main class="hji-spm-idx__main lead-details">
+            <section class="hji-spm-idx__top-section wrap">
+                <?php echo $context; ?>
+            </section>
+        </main>
+    </div>
+</div>
+
+<div class="hji-jquery-ui">
+    <div class="_timeframe-wrap wp-dialog hji-spm-idx__custom-range-dialog" style="display: none;">
+        <form id="time_frame" name="time_frame" method="get" action="<?php echo \SpatialMatchIdx\core\helpers\URLHelper::getLinkWithParams(['page', 'action', 'lead_id', 'item']) ?>" style="white-space: nowrap;">
+            <div>
+                <label for="from">From</label>
+                <input id="from" type="text" name="from" class="from" value="<?php echo DateTimeHelper::getDateFrom();?>" />
+                <label for="to">To</label>
+                <input id="to" type="text" name="to" class="to" value="<?php echo DateTimeHelper::getDateTo();?>"/>
+            </div>
+            <?php
+            $disabled = '';
+            if (empty($to) && empty($from)) {$disabled="disabled";}
+            ?>
+            <input id="_submitTimeframe" class="button" type="submit" <?php echo $disabled; ?> name="submit" value="Search" />
+        </form>
+    </div>
+</div>

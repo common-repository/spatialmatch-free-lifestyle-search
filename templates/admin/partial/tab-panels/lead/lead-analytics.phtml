@@ -1,0 +1,60 @@
+<?php
+$submenuItems = [
+    'actions' => \SpatialMatchIdx\core\helpers\URLHelper::getLinkWithParams([
+        'page',
+        'lead_id',
+        'action',
+    ], [
+        'item' => 'actions'
+    ]),
+    'sessions' => \SpatialMatchIdx\core\helpers\URLHelper::getLinkWithParams([
+        'page',
+        'lead_id',
+        'action',
+    ], [
+        'item' => 'sessions'
+    ]),
+];
+
+$currentItem = $_GET['item'] ?? 'actions';
+
+if ($currentItem === 'session-details') {
+    $submenuItems['session-details'] = '';
+}
+?>
+
+<div id="hji-spm-idx__<?php echo $context['slug'] ?>-tp" aria-labelledby="<?php  ?>" class="hji-spm-idx__tab-panel <?php echo $context['class']; ?>">
+    <div>
+        <ul class="subsubsub">
+        <?php
+        $cont = 0;
+        $current = '';
+        foreach ($submenuItems as $key => $item) {
+            if ($key === $currentItem) {
+                $current = 'current';
+            }
+        ?>
+           <li class="summary ">
+            <?php
+            if ($cont > 0) {
+                echo ' | ';
+            }
+
+            echo sprintf('<a class="%s" href="%s">%s</a>',$current, $item, ucwords(str_replace('-', ' ', $key)));
+            ?>
+            </li>
+            <?php
+
+            $current = '';
+            $cont++;
+        }
+        ?>
+        </ul>
+        <div style="clear: both"></div>
+
+        <h3>Lead <?php echo ucwords(str_replace('-', ' ', $currentItem)); ?> <span class="subtitle"><?php echo $context['data']['filterTitle'] ?? ''; ?></span></h3>
+    </div>
+    <?php echo $context['data']['listTable'] ?? ''; ?>
+
+    <?php echo $context['data']['sessionDetails'] ?? ''; ?>
+</div>

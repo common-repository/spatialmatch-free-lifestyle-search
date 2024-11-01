@@ -1,0 +1,16 @@
+<?php
+use SpatialMatchIdx\core\helpers\DateTimeHelper;
+?>
+<div class="session-details">
+    <p>
+        Duration: <?php echo gmdate("H:i:s", $session['duration']);?><br />
+        Start Time: <?php echo DateTimeHelper::toDateTime($session['startTime']);?><br />
+        End Time: <?php echo DateTimeHelper::toDateTime($session['endTime']);?>
+    </p>
+
+    <h3>Actions During Session</h3>
+
+
+    <?php echo $sessionDetailsContent; ?>
+
+</div>

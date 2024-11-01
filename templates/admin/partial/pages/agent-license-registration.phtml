@@ -1,0 +1,487 @@
+<?php /** @var \SpatialMatchIdx\core\forms\ActiveForm $form */ ?>
+
+<div class="hji-spatialmatch-idx__license-registration-page hji-spatialmatch-idx__page wrap">
+    <header class="hji-spm-idx__header">
+        <div class="hji-spm-idx__page-title">
+            <h1>Agent/Broker License Registration - SpatialMatch IDX</h1>
+        </div>
+        <a href="#">
+            <img src="<?php echo SPATIALMATCH_IDX_URL; ?>assets/img/logo.png" alt="">
+        </a>
+    </header>
+    <div class="container">
+        <aside class="wrap">
+            <div class="hji-spm-idx__info-box">
+                <p>For questions call Home Junction Sales Department <br><a href="tel:(858) 777 - 9533 x3">(858) 777 - 9533 x3</a></p>
+            </div>
+        </aside>
+
+        <main class="hji-spm-idx__main">
+            <section class="hji-spm-idx__top-section wrap">
+                <div class="notice notice-info" style="display: inline-block;">
+                    <ul style="list-style-type: disc; list-style-position: inside;">
+                        <li>
+                            You must be a current member of your MLS to receive live IDX Data Feed.
+                        </li>
+                        <li>
+                            Your license key will be emailed to you upon completion of the registration form below.
+                        </li>
+                    </ul>
+                </div>
+
+                <form method="post" action="<?php echo home_url('wp-admin/admin.php?page=hji-spatialmatch-idx&action=save-license-registration');?>">
+                    <?php wp_nonce_field(); ?>
+                    <input type="hidden" name="license_type" value="<?php if ('free' === $form->getValue('subscription_type')) {echo 'trial';} else {echo 'subscription';} ?>">
+                    <input type="hidden" name="form_name" value="alr">
+                    <table class="form-table">
+                        <tbody>
+                        <tr>
+                            <th>
+                                Subscription Plan:
+                            </th>
+                            <td>
+                                <div class="hji-spm-idx__subscription-type-fields-block">
+                                    <div class="hji-spm-idx__subscription-type <?php if ('annual' === $form->getValue('subscription_type')) echo 'checked' ?>">
+                                        <label>
+                                            <span>Annual<br><i>(save $140)</i></span>
+                                            <span>
+                                                <input type="radio" name="alr[subscription_type]" <?php if ('annual' === $form->getValue('subscription_type')) echo 'checked' ?> value="annual"> $58.29/mo
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="hji-spm-idx__subscription-type <?php if ('monthly' === $form->getValue('subscription_type')) echo 'checked' ?>">
+                                        <label>
+                                            <span>Monthly</span>
+                                            <span>
+                                                <input type="radio" name="alr[subscription_type]" <?php if ('monthly' === $form->getValue('subscription_type')) echo 'checked' ?> value="monthly"> $99.95/mo
+                                            </span>
+                                        </label>
+
+                                    </div>
+                                </div>
+                                <?php $form->showError('subscription_type'); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label for="hji-spm-idx__alr-market">
+                                    MLS/Market:
+                                </label>
+                            </th>
+                            <td class="select2-row">
+                                <select
+                                        <?php $form->showErrorAttributes('market', 'hji-spm-idx__alr-market'); ?>
+                                        id="hji-spm-idx__alr-market"
+                                        name="alr[market]"
+                                        class="hji-validate select2-simple hji-spm-idx__register-license-form-markets"
+                                >
+                                    <option value="">Select Market</option>
+                                    <?php
+                                    $currentMarket  = $form->getValue('market');
+                                    foreach ($marketsList as $market):
+                                        if ($market->id === $form->getValue('market')) {
+                                            $selected = 'selected';
+                                            $currentMarket = null;
+                                        } else {
+                                            $selected = '';
+                                        }
+
+                                    ?>
+                                        <option <?php echo $selected ?> value="<?php echo $market->id; ?>">
+                                            <?php echo ('other_market' === $market->id) ? $market->name : sprintf('%s - %s [%s]',  $market->state, $market->name, $market->id); ?>
+                                        </option>
+                                    <?php endforeach; ?>
+
+                                    <?php if ($currentMarket): ?>
+                                        <option selected value="<?php echo $currentMarket; ?>"><?php echo $currentMarket; ?></option>
+                                    <?php endif; ?>
+                                </select>
+                                <?php $form->showError('market', 'hji-spm-idx__alr-market'); ?>
+                            </td>
+                        </tr>
+                        <tr class="other_market_row">
+                            <th>
+                                <label for="hji-spm-idx__alr-other-market">
+                                    Other MLS/Market:
+                                </label>
+                            </th>
+                            <td>
+                                <input
+                                        <?php $form->showErrorAttributes('other_market', 'hji-spm-idx__alr-other-market'); ?>
+                                        type="text"
+                                        class="regular-text <?php $form->showClassIfError('other_market');?>"
+                                        id="hji-spm-idx__alr-other-market"
+                                        name="alr[other_market]"
+                                        value="<?php echo $form->getValue('other_market'); ?>"
+                                >
+                                <?php $form->showError('other_market', 'hji-spm-idx__alr-other-market'); ?>
+                                <p class="description">Enter your MLS here if it's not on the list above</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label for="hji-spm-idx__alr-website-url">
+                                    Website URL:
+                                </label>
+                            </th>
+                            <td>
+                                <input
+                                        <?php $form->showErrorAttributes('website_url', 'hji-spm-idx__alr-website-url'); ?>
+                                        type="text"
+                                        class="hji-validate regular-text <?php $form->showClassIfError('website_url');?>"
+                                        id="hji-spm-idx__alr-website-url"
+                                        name="alr[website_url]"
+                                        value="<?php echo $form->getValue('website_url'); ?>"
+                                >
+                                <?php $form->showError('website_url', 'hji-spm-idx__alr-website-url'); ?>
+                                <p class="description">Website URL where SpatialMatch IDX will be used</p>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <h3>Personal Information</h3>
+                    <table class="form-table">
+                        <tbody>
+                        <tr>
+                            <th>
+                                <label for="hji-spm-idx__alr-first-name">
+                                    First Name:
+                                </label>
+                            </th>
+                            <td>
+                                <input
+                                        <?php $form->showErrorAttributes('first_name', 'hji-spm-idx__alr-first-name'); ?>
+                                        type="text"
+                                        class="hji-validate regular-text <?php $form->showClassIfError('first_name');?>"
+                                        id="hji-spm-idx__alr-first-name"
+                                        name="alr[first_name]"
+                                        value="<?php echo $form->getValue('first_name'); ?>"
+                                >
+                                <?php $form->showError('first_name', 'hji-spm-idx__alr-first-name'); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label for="hji-spm-idx__alr-last-name">
+                                    Last Name:
+                                </label>
+                            </th>
+                            <td>
+                                <input
+                                        <?php $form->showErrorAttributes('last_name', 'hji-spm-idx__alr-last-name'); ?>
+                                        type="text"
+                                        class="hji-validate regular-text <?php $form->showClassIfError('last_name');?>"
+                                        id="hji-spm-idx__alr-last-name"
+                                        name="alr[last_name]"
+                                        value="<?php echo $form->getValue('last_name'); ?>"
+                                >
+                                <?php $form->showError('last_name', 'hji-spm-idx__alr-last-name'); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label for="hji-spm-idx__alr-email">
+                                    Email:
+                                </label>
+                            </th>
+                            <td>
+                                <input
+                                        <?php $form->showErrorAttributes('email', 'hji-spm-idx__alr-email'); ?>
+                                        type="email"
+                                        class="hji-validate regular-text <?php $form->showClassIfError('email');?>"
+                                        id="hji-spm-idx__alr-email"
+                                        name="alr[email]"
+                                        value="<?php echo $form->getValue('email'); ?>"
+                                >
+                                <?php $form->showError('email', 'hji-spm-idx__alr-email'); ?>
+                                <p class="description">Your license key will be sent to this address</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label for="hji-spm-idx__alr-cell-phone">
+                                    Cell Phone:
+                                </label>
+                            </th>
+                            <td>
+                                <input
+                                        <?php $form->showErrorAttributes('cell_phone', 'hji-spm-idx__alr-cell-phone'); ?>
+                                        type="text"
+                                        class="hji-validate regular-text <?php $form->showClassIfError('cell_phone');?>"
+                                        id="hji-spm-idx__alr-cell-phone"
+                                        name="alr[cell_phone]"
+                                        value="<?php echo $form->getValue('cell_phone'); ?>"
+                                >
+                                <?php $form->showError('cell_phone', 'hji-spm-idx__alr-cell-phone'); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label for="hji-spm-idx__alr-office-phone">
+                                    Office Phone:
+                                </label>
+                            </th>
+                            <td>
+                                <input
+                                        <?php $form->showErrorAttributes('office_phone', 'hji-spm-idx__alr-office-phone'); ?>
+                                        type="text"
+                                        class="hji-validate regular-text <?php $form->showClassIfError('office_phone');?>"
+                                        id="hji-spm-idx__alr-office-phone"
+                                        name="alr[office_phone]"
+                                        value="<?php echo $form->getValue('office_phone'); ?>"
+                                >
+                                <?php $form->showError('office_phone', 'hji-spm-idx__alr-office-phone'); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label for="hji-spm-idx__alr-agent-mls-id">
+                                    Agent MLS ID:
+                                </label>
+                            </th>
+                            <td>
+                                <input
+                                        <?php $form->showErrorAttributes('agent_mls_id', 'hji-spm-idx__alr-agent-mls-id'); ?>
+                                        type="text"
+                                        class="hji-validate regular-text <?php $form->showClassIfError('agent_mls_id');?>"
+                                        id="hji-spm-idx__alr-agent-mls-id"
+                                        name="alr[agent_mls_id]"
+                                        value="<?php echo $form->getValue('agent_mls_id'); ?>"
+                                >
+                                <?php $form->showError('agent_mls_id', 'hji-spm-idx__alr-agent-mls-id'); ?>
+                            </td>
+                        </tr>
+                        <tr id="spm-license-row" class="<?php echo ($form->getValue('subscription_type') === 'free' ? 'hide' : ''); ?>">
+                            <th>
+                                <label for="hji-spm-idx__alr-license">
+                                    License #:
+                                </label>
+                            </th>
+                            <td>
+                                <input
+                                        <?php $form->showErrorAttributes('license', 'hji-spm-idx__alr-license'); ?>
+                                        type="text"
+                                        class="hji-validate regular-text <?php $form->showClassIfError('license');?>"
+                                        id="hji-spm-idx__alr-license"
+                                        name="alr[license]"
+                                        value="<?php echo $form->getValue('license'); ?>"
+                                >
+                                <?php $form->showError('license', 'hji-spm-idx__alr-license'); ?>
+                                <p class="description">License, DRE or California BRE</p>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <h3>Company Information</h3>
+                    <table class="form-table">
+                        <tbody>
+                        <tr>
+                            <th>
+                                <label for="hji-spm-idx__alr-company-information">
+                                    Company Name:
+                                </label>
+                            </th>
+                            <td>
+                                <input
+                                        <?php $form->showErrorAttributes('company_name', 'hji-spm-idx__alr-company-information'); ?>
+                                        type="text"
+                                        class="hji-validate regular-text <?php $form->showClassIfError('company_name');?>"
+                                        id="hji-spm-idx__alr-company-information"
+                                        name="alr[company_name]"
+                                        value="<?php echo $form->getValue('company_name'); ?>"
+                                >
+                                <?php $form->showError('company_name', 'hji-spm-idx__alr-company-information'); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label for="hji-spm-idx__alr-street-address">
+                                    Street Address:
+                                </label>
+                            </th>
+                            <td>
+                                <input
+                                        <?php $form->showErrorAttributes('street_address', 'hji-spm-idx__alr-street-address'); ?>
+                                        type="text"
+                                        class="hji-validate regular-text <?php $form->showClassIfError('street_address');?>"
+                                        id="hji-spm-idx__alr-street-address"
+                                        name="alr[street_address]"
+                                        value="<?php echo $form->getValue('street_address'); ?>"
+                                >
+                                <?php $form->showError('street_address', 'hji-spm-idx__alr-street-address'); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label for="hji-spm-idx__alr-city">
+                                    City:
+                                </label>
+                            </th>
+                            <td>
+                                <input
+                                        <?php $form->showErrorAttributes('city', 'hji-spm-idx__alr-city'); ?>
+                                        type="text"
+                                        class="hji-validate regular-text <?php $form->showClassIfError('city');?>"
+                                        id="hji-spm-idx__alr-city"
+                                        name="alr[city]"
+                                        value="<?php echo $form->getValue('city'); ?>"
+                                >
+                                <?php $form->showError('city', 'hji-spm-idx__alr-city'); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label for="hji-spm-idx__alr-state">
+                                    State:
+                                </label>
+                            </th>
+                            <td class="select2-row">
+                                <?php
+                                $states = \SpatialMatchIdx\core\helpers\AddressHelper:: getStatesList();
+                                ?>
+                                <select class="hji-validate regular-text select2-simple <?php $form->showClassIfError('state'); ?>"
+                                        id="hji-spm-idx__alr-state"
+                                        name="alr[state]"
+                                        <?php $form->showErrorAttributes('state', 'hji-spm-idx__alr-state'); ?>
+                                >
+                                    <option value=""> </option>
+                                    <?php
+                                    foreach ($states as $key => $value):
+                                        $selected = ($key === $form->getValue('state')) ? 'selected' : '';
+                                        ?>
+                                        <option <?php echo $selected ?> value="<?php echo $key; ?>">
+                                            <?php echo $value; ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+
+                                <?php $form->showError('state', 'hji-spm-idx__alr-state'); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label for="hji-spm-idx__alr-zip-code">
+                                    Zip Code:
+                                </label>
+                            </th>
+                            <td>
+                                <input
+                                        <?php $form->showErrorAttributes('zip_code', 'hji-spm-idx__alr-zip-code'); ?>
+                                        type="text"
+                                        class="hji-validate regular-text <?php $form->showClassIfError('zip_code');?>"
+                                        id="hji-spm-idx__alr-zip-code"
+                                        name="alr[zip_code]"
+                                        value="<?php echo $form->getValue('zip_code'); ?>"
+                                >
+                                <?php $form->showError('zip_code', 'hji-spm-idx__alr-zip-code'); ?>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div id="subsciption-license-fields-block"  class="<?php echo ($form->getValue('subscription_type') === 'free' ? 'hide' : ''); ?>">
+                        <h3>Brokerage Information</h3>
+                        <table class="form-table">
+                            <tbody>
+                            <tr>
+                                <th>
+                                    <label for="hji-spm-idx__alr-brokerage-name">
+                                        Brokerage Name:
+                                    </label>
+                                </th>
+                                <td>
+                                    <input
+                                        <?php $form->showErrorAttributes('brokerage_name', 'hji-spm-idx__alr-brokerage-name'); ?>
+                                            type="text"
+                                            class="hji-validate regular-text <?php $form->showClassIfError('brokerage_name');?>"
+                                            id="hji-spm-idx__alr-brokerage-name"
+                                            name="alr[brokerage_name]"
+                                            value="<?php echo $form->getValue('brokerage_name'); ?>"
+                                    >
+                                    <?php $form->showError('brokerage_name', 'hji-spm-idx__alr-brokerage-name'); ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <label for="hji-spm-idx__alr-broker-full-name">
+                                        Broker in Charge (Full Name):
+                                    </label>
+                                </th>
+                                <td>
+                                    <input
+                                        <?php $form->showErrorAttributes('broker_full_name', 'hji-spm-idx__alr-broker-full-name'); ?>
+                                            type="text"
+                                            class="hji-validate regular-text <?php $form->showClassIfError('broker_full_name');?>"
+                                            id="hji-spm-idx__alr-broker-full-name"
+                                            name="alr[broker_full_name]"
+                                            value="<?php echo $form->getValue('broker_full_name'); ?>"
+                                    >
+                                    <?php $form->showError('broker_full_name', 'hji-spm-idx__alr-broker-full-name'); ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <label for="hji-spm-idx__alr-broker-mls-id">
+                                        Broker MLS ID:
+                                    </label>
+                                </th>
+                                <td>
+                                    <input
+                                        <?php $form->showErrorAttributes('broker_mls_id', 'hji-spm-idx__alr-broker-mls-id'); ?>
+                                            type="text"
+                                            class="hji-validate regular-text <?php $form->showClassIfError('broker_mls_id');?>"
+                                            id="hji-spm-idx__alr-broker-mls-id"
+                                            name="alr[broker_mls_id]"
+                                            value="<?php echo $form->getValue('broker_mls_id'); ?>"
+                                    >
+                                    <?php $form->showError('broker_mls_id', 'hji-spm-idx__alr-broker-mls-id'); ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <label for="hji-spm-idx__alr-broker-office-mls-id">
+                                        Broker Office MLS ID:
+                                    </label>
+                                </th>
+                                <td>
+                                    <input
+                                        <?php $form->showErrorAttributes('broker_office_mls_id', 'hji-spm-idx__alr-broker-office-mls-id'); ?>
+                                            type="text"
+                                            class="hji-validate regular-text <?php $form->showClassIfError('broker_office_mls_id');?>"
+                                            id="hji-spm-idx__alr-broker-office-mls-id"
+                                            name="alr[broker_office_mls_id]"
+                                            value="<?php echo $form->getValue('broker_office_mls_id'); ?>"
+                                    >
+                                    <?php $form->showError('broker_office_mls_id', 'hji-spm-idx__alr-broker-office-mls-id'); ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <label for="hji-spm-idx__alr-broker-email">
+                                        Broker Email:
+                                    </label>
+                                </th>
+                                <td>
+                                    <input
+                                        <?php $form->showErrorAttributes('broker_email', 'hji-spm-idx__alr-broker-email'); ?>
+                                            type="email"
+                                            class="hji-validate regular-text <?php $form->showClassIfError('broker_email');?>"
+                                            id="hji-spm-idx__alr-broker-email"
+                                            name="alr[broker_email]"
+                                            value="<?php echo $form->getValue('broker_email'); ?>"
+                                    >
+                                    <?php $form->showError('broker_email', 'hji-spm-idx__alr-broker-email'); ?>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="description">
+                        By clicking <strong>"Complete registration"</strong> button, you agree to <a href="https://www.homejunction.com/terms-of-use/" target="_blank">Terms of Use</a> and <a href="https://www.homejunction.com/privacy-policy-2020/" target="_blank">Privacy Policy</a> of Home Junction Inc, and consent to sending your registration information to Home Junction Inc secure external web service for processing.
+                    </p>
+                    <input class="button button-primary" type="submit" value="Complete Registration">
+                </form>
+            </section>
+        </main>
+    </div>
+</div>
+<div id="js-valid"><?php $form->generateJsValidation('alr'); ?></div>

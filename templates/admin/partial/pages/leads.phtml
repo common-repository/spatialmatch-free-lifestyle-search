@@ -1,0 +1,59 @@
+<div class="hji-spm-id__leads-page hji-spatialmatch-idx__page wrap">
+    <header class="hji-spm-idx__header">
+        <div class="hji-spm-idx__page-title">
+            <h1>Leads - SpatialMatch IDX</h1>
+        </div>
+        <a href="#">
+            <img src="<?php echo SPATIALMATCH_IDX_URL; ?>assets/img/logo.png" height="60px" alt="">
+        </a>
+    </header>
+    <div class="container">
+        <main class="hji-spm-idx__main" style="width: 100%;max-width: 100%;">
+            <section class="hji-spm-idx__top-section">
+
+                <div class="hji-spm-idx__top-section-wrapper" style="width: 100%;max-width: 100%;flex-direction: column;">
+                    <div class="hji-spm-idx_before-leads-form">
+                        <h2 class="header-section">Registered Users</h2>
+                        <?php if ($totalLeads > 0): ?>
+                            <form method="post" action="<?php echo home_url('wp-admin/admin.php?page=hji-spatialmatch-idx-leads&action=export-leads'); ?>" class="hji-spm-idx__column">
+                                <?php wp_nonce_field(); ?>
+
+                                <?php echo $activeFilter; ?>
+                                &nbsp;<button class="button button-secondary" id="hji-spm-idx-leads-export" type="submit">Export</button>
+                                <a href="<?php echo \SpatialMatchIdx\core\helpers\URLHelper::getLinkWithParams(['page',], ['action' => 'new-lead']); ?>" class="button button-secondary">Add New User</a>
+                            </form>
+                        <?php endif; ?>
+                        <div class="search-results hji-spm-idx__column" style="text-align: right">
+                        <?php if (!empty($search_result)) : ?>
+                            Search results for: <strong><?php echo $search_result; ?></strong>
+                        <?php endif; ?>
+                        </div>
+                    </div>
+
+                    <form id="hji-spm-idx_leads-form" method="post" action="<?php echo home_url('wp-admin/admin.php?page=hji-spatialmatch-idx-leads&action=search-leads'); ?>">
+                        <?php wp_nonce_field(); ?>
+                        <?php echo $context; ?>
+                        <input type="hidden" name="from" class="from" value="<?php echo $from; ?>"/>
+                        <input type="hidden" name="to" class="to" value="<?php echo $to; ?>"/>
+                        </div>
+                    </form>
+                <div class="hji-jquery-ui">
+                    <div class="timeframe-wrap wp-dialog hji-spm-idx__custom-range-dialog" style="display: none;">
+                        <div>
+                            <label for="from">From</label>
+                            <input id="from" type="text" name="fake-from" class="from" value="" />
+                            <label for="to">To</label>
+                            <input id="to" type="text" name="fake-to" class="to" value=""/>
+                        </div>
+                        <?php
+                        $disabled = '';
+                        if (empty($to) && empty($from)) {$disabled="disabled";}
+                        ?>
+                        <input id="submitTimeframe" class="button" type="button" <?php echo $disabled; ?> name="submit" value="Search" />
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</div>
+

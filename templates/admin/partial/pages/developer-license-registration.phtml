@@ -1,0 +1,147 @@
+<?php /** @var \SpatialMatchIdx\core\forms\ActiveForm $form */ ?>
+
+<div class="hji-spatialmatch-idx__license-registration-page hji-spatialmatch-idx__page wrap">
+    <header class="hji-spm-idx__header">
+        <div class="hji-spm-idx__page-title">
+            <h1>Developer License Registration - SpatialMatch IDX</h1>
+        </div>
+        <a href="#">
+            <img src="<?php echo SPATIALMATCH_IDX_URL; ?>assets/img/logo.png" alt="">
+        </a>
+    </header>
+    <div class="container">
+        <aside class="wrap">
+            <div class="hji-spm-idx__info-box">
+                <p>For questions call Home Junction Sales Department <br><a href="tel:(858) 777 - 9533 x3">(858) 777 - 9533 x3</a></p>
+            </div>
+        </aside>
+
+        <main class="hji-spm-idx__main">
+            <section class="hji-spm-idx__top-section wrap">
+                <form method="post" action="<?php echo home_url('wp-admin/admin.php?page=hji-spatialmatch-idx&action=save-license-registration');?>">
+                    <?php wp_nonce_field(); ?>
+                    <input type="hidden" name="license_type" value="developer">
+                    <input type="hidden" name="form_name" value="dlr">
+                    <h3>Personal Information</h3>
+                    <table class="form-table">
+                        <tbody>
+                        <tr>
+                            <th>
+                                <label for="hji-spm-idx__dlr-first-name">
+                                    First Name:
+                                </label>
+                            </th>
+                            <td>
+                                <input
+                                        <?php $form->showErrorAttributes('first_name', 'hji-spm-idx__dlr-first-name'); ?>
+                                        type="text"
+                                        class="hji-validate regular-text <?php $form->showClassIfError('first_name'); ?>"
+                                        id="hji-spm-idx__dlr-first-name"
+                                        name="dlr[first_name]"
+                                        value="<?php echo $form->getValue('first_name'); ?>"
+                                >
+                                <?php $form->showError('first_name', 'hji-spm-idx__dlr-first-name'); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label for="">
+                                    Last Name:
+                                </label>
+                            </th>
+                            <td>
+                                <input
+                                        <?php $form->showErrorAttributes('last_name', 'hji-spm-idx__dlr-last-name'); ?>
+                                        type="text"
+                                        class="hji-validate regular-text <?php $form->showClassIfError('last_name'); ?>"
+                                        id="hji-spm-idx__dlr-last-name"
+                                        name="dlr[last_name]" value="<?php echo $form->getValue('last_name'); ?>"
+                                >
+                                <?php $form->showError('last_name', 'hji-spm-idx__dlr-last-name'); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label for="hji-spm-idx__dlr-email">
+                                    Email:
+                                </label>
+                            </th>
+                            <td>
+                                <input
+                                        <?php $form->showErrorAttributes('email', 'hji-spm-idx__dlr-email'); ?>
+                                        type="email"
+                                        class="hji-validate regular-text <?php $form->showClassIfError('email'); ?>"
+                                        id="hji-spm-idx__dlr-email"
+                                        name="dlr[email]"
+                                        value="<?php echo $form->getValue('email'); ?>"
+                                >
+                                <?php $form->showError('email', 'hji-spm-idx__dlr-email'); ?>
+                                <p class="description">Your license key will be sent to this address</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label for="hji-spm-idx__phone">
+                                    Phone:
+                                </label>
+                            </th>
+                            <td>
+                                <input
+                                        <?php $form->showErrorAttributes('phone', 'hji-spm-idx__phone'); ?>
+                                        type="text"
+                                        class="hji-validate regular-text <?php $form->showClassIfError('phone'); ?>"
+                                        id="hji-spm-idx__phone"
+                                        name="dlr[phone]"
+                                        value="<?php echo $form->getValue('phone'); ?>"
+                                >
+                                <?php $form->showError('phone', 'hji-spm-idx__phone'); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label for="hji-spm-idx__company-name">
+                                    Company Name:
+                                </label>
+                            </th>
+                            <td>
+                                <input
+                                        <?php $form->showErrorAttributes('company_name', 'hji-spm-idx__company-name'); ?>
+                                        type="text"
+                                        class="hji-validate required regular-text <?php $form->showClassIfError('company_name'); ?>"
+                                        id="hji-spm-idx__company-name"
+                                        name="dlr[company_name]"
+                                        value="<?php echo $form->getValue('company_name'); ?>"
+                                >
+                                <?php $form->showError('company_name', 'hji-spm-idx__company-name'); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label for="hji-spm-idx__company-website">
+                                    Company Website:
+                                </label>
+                            </th>
+                            <td>
+                                <input
+                                        <?php $form->showErrorAttributes('company_website', 'hji-spm-idx__company-website'); ?>
+                                        type="text"
+                                        class="hji-validate regular-text <?php $form->showClassIfError('company_website'); ?>"
+                                        id="hji-spm-idx__company-website"
+                                        name="dlr[company_website]"
+                                        value="<?php echo $form->getValue('company_website'); ?>"
+                                >
+                                <?php $form->showError('company_website', 'hji-spm-idx__company-website'); ?>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <p>
+                        By clicking <strong>"Complete registration"</strong> button, you agree to <a href="https://www.homejunction.com/terms-of-use/" target="_blank">Terms of Use</a> and <a href="https://www.homejunction.com/privacy-policy-2020/" target="_blank">Privacy Policy</a> of Home Junction Inc, and consent to sending your registration information to Home Junction Inc secure external web service for processing.
+                    </p>
+                    <input class="button button-primary" type="submit" value="Complete Registration">
+                </form>
+            </section>
+        </main>
+    </div>
+</div>
+<?php $form->generateJsValidation('dlr'); ?>

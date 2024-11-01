@@ -1,0 +1,148 @@
+<?php
+$licenseTypesLabels = [
+    '' => 'Empty',
+    'invalid' => 'Invalid License',
+    'developer' => 'Developer License',
+    'trial' => 'Limited Trial - accessible in admin mode only',
+    'production' => 'Subscription',
+];
+?>
+
+<div id="hji-spm-idx__<?php echo $context['slug']; ?>-tp" aria-labelledby="hji-spm-idx__<?php echo $context['slug']; ?>" class="hji-spm-idx__tab-panel <?php echo $context['class']; ?>">
+    <h2>IDX Licensing</h2>
+
+    <form id="hji-spm-idx__form-<?php echo $context['slug']; ?>" method="post" action="<?php site_url();?>/wp-admin/admin.php?page=hji-spatialmatch-idx&action=save-license">
+        <?php wp_nonce_field(); ?>
+        <p>Enter your SpatialMatch IDX license key to connect your website to the API.</p>
+        <table class="form-table">
+            <tbody>
+            <tr>
+                <th>
+                    <label for="hji-spm-idx__license">License Key:</label>
+                </th>
+                <td>
+                    <input class="regular-text" id="hji-spm-idx__license" class="warning" name="<?php echo $context['slug']; ?>[license_key]" type="text" placeholder="Enter license key" value="<?php echo $context['data']['license']['license_key']; ?>">
+
+                    <?php if (empty($context['data']['license']['license_type'])): ?>
+                    <a href="<?php site_url();?>/wp-admin/admin.php?page=hji-spatialmatch-idx&action=license-types">Get License Key</a>
+                    <?php endif; ?>
+
+                    <?php if ('trial' === $context['data']['license']['license_type']): ?>
+                    <p class="description help-text license-type-trial">Limited Trial accessible in admin mode only. <a href="<?php echo home_url();?>/wp-admin/admin.php?page=hji-spatialmatch-idx&action=upgrade-license">Upgrade license</a> for public use.</p>
+                    <?php endif; ?>
+
+                    <?php if ('developer' === $context['data']['license']['license_type']): ?>
+                    <p class="description help-text license-type-trial">Developer license in use. <a href="<?php echo home_url();?>/wp-admin/admin.php?page=hji-spatialmatch-idx&action=upgrade-license">Upgrade license</a> to get live MLS feed.</p>
+                    <?php endif; ?>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="submit" class="button button-primary">Save Changes</button>
+    </form>
+
+    <?php if (!in_array($context['data']['license']['license_type'], [null, 'invalid', ''])): ?>
+        <br><br><br><br>
+        <div>
+            <h3>Subscription Information</h3>
+
+            <table class="info-table">
+                <tbody>
+                    <tr>
+                        <th>
+                            <label for="hji-spm-idx__license">License Type:</label>
+                        </th>
+                        <td>
+                            <?php echo $licenseTypesLabels[$context['data']['license']['license_type']]; ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="hji-spm-idx__license">IDX URL:</label>
+                        </th>
+                        <td>
+                            <a href="<?php echo $context['data']['mapSearchAppUrl']; ?>" target="_blank"><?php echo $context['data']['mapSearchAppUrl']; ?></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <h3>Markets</h3>
+            <div>
+                <?php foreach ($context['data']['markets'] as $market):?>
+                    <div><?php echo sprintf('%s - %s', strtoupper($market['id']), $market['name']);?></div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+
+        <div>
+            <h3>Licensee</h3>
+
+            <table class="info-table">
+                <tbody>
+                    <tr>
+                        <th>
+                            <label for="hji-spm-idx__license">Name:</label>
+                        </th>
+                        <td>
+                            <?php echo $context['data']['customer']['name'] ?? '-'; ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="hji-spm-idx__license">Email:</label>
+                        </th>
+                        <td>
+                            <?php echo $context['data']['customer']['email'] ?? '-'; ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="hji-spm-idx__license">Office:</label>
+                        </th>
+                        <td>
+                            <?php echo $context['data']['customer']['officeName'] ?? '-'; ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="hji-spm-idx__license">Address:</label>
+                        </th>
+                        <td>
+                            <?php
+                            if (isset($context['data']['customer']['address'])) {
+                                echo sprintf('%s, %s, %s %s',
+                                    $context['data']['customer']['address']['street'],
+                                    $context['data']['customer']['address']['city'],
+                                    $context['data']['customer']['address']['state'],
+                                    $context['data']['customer']['address']['zip']
+                                );
+                            } else {
+                                echo '-';
+                            }
+                            ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="hji-spm-idx__license">Office Phone:</label>
+                        </th>
+                        <td>
+                            <?php echo $context['data']['customer']['officePhone'] ?? '-'; ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="hji-spm-idx__license">Mobile Phone:</label>
+                        </th>
+                        <td>
+                            <?php echo $context['data']['customer']['mobilePhone'] ?? '-'; ?>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    <?php endif; ?>
+</div>

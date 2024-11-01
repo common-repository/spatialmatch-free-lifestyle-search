@@ -1,0 +1,827 @@
+[
+  {
+    "state": "",
+    "id": "other_market",
+    "name": "Other MLS/Market"
+  },
+  {
+    "state": "AK",
+    "id": "AKMLS",
+    "name": "Alaska MLS"
+  },
+  {
+    "state": "AL",
+    "id": "SAAR",
+    "name": "Shoals Area Association of REALTORS"
+  },
+  {
+    "state": "AL",
+    "id": "NALMLS",
+    "name": "Northern Alabama MLS"
+  },
+  {
+    "state": "AL",
+    "id": "PARMLS",
+    "name": "Pensacola Association of REALTORS"
+  },
+  {
+    "state": "AL",
+    "id": "WALMLS",
+    "name": "West Alabama MLS (Tuscaloosa)"
+  },
+  {
+    "state": "AR",
+    "id": "CARMLS",
+    "name": "Little Rock Arkansas"
+  },
+  {
+    "state": "AZ",
+    "id": "SVVAR",
+    "name": "Sedona Verde Valley Association of Realtors"
+  },
+  {
+    "state": "AZ",
+    "id": "LHAR",
+    "name": "Lake Havasu Association of REALTORS"
+  },
+  {
+    "state": "AZ",
+    "id": "ARMLS",
+    "name": "Arizona Regional MLS"
+  },
+  {
+    "state": "AZ",
+    "id": "YUMA",
+    "name": "Yuma Association of REALTORS"
+  },
+  {
+    "state": "AZ",
+    "id": "TARMLS",
+    "name": "Tucson Association of Realtors"
+  },
+  {
+    "state": "AZ",
+    "id": "NOAZ",
+    "name": "Northern Arizona MLS"
+  },
+  {
+    "state": "AZ",
+    "id": "PAAR",
+    "name": "Prescott Arizona Association of Realtors"
+  },
+  {
+    "state": "CA",
+    "id": "BAREIS",
+    "name": "Bay Area Real Estate Information Services"
+  },
+  {
+    "state": "CA",
+    "id": "BAYEAST",
+    "name": "Bay East MLS"
+  },
+  {
+    "state": "CA",
+    "id": "BKFLDMLS",
+    "name": "Bakersfield MLS"
+  },
+  {
+    "state": "CA",
+    "id": "CONTRA",
+    "name": "Contra Costa Association of REALTORS"
+  },
+  {
+    "state": "CA",
+    "id": "EBRD",
+    "name": "bridgeMLS"
+  },
+  {
+    "state": "CA",
+    "id": "CALRETS",
+    "name": "MLS Listings (CALRETS)"
+  },
+  {
+    "state": "CA",
+    "id": "CLAW",
+    "name": "CLAW (Combined LA\/Westside)"
+  },
+  {
+    "state": "CA",
+    "id": "TSMLS",
+    "name": "Tahoe Sierra MLS"
+  },
+  {
+    "state": "CA",
+    "id": "CRISNET",
+    "name": "San Fernando Valley, San Clarita Valley"
+  },
+  {
+    "state": "CA",
+    "id": "CRMLS",
+    "name": "California Regional MLS"
+  },
+  {
+    "state": "CA",
+    "id": "DAMLS",
+    "name": "Desert Area MLS"
+  },
+  {
+    "state": "CA",
+    "id": "FRESNO",
+    "name": "Fresno MLS"
+  },
+  {
+    "state": "CA",
+    "id": "GAVAR",
+    "name": "Greater Antelope Valley Association of Realtors"
+  },
+  {
+    "state": "CA",
+    "id": "GLVMLS",
+    "name": "Greater Las Vegas MLS"
+  },
+  {
+    "state": "CA",
+    "id": "ITECH",
+    "name": "I-TECH MLS (Glendale California)"
+  },
+  {
+    "state": "CA",
+    "id": "HDAR",
+    "name": "High Desert Association of REALTORS"
+  },
+  {
+    "state": "CA",
+    "id": "METROLISTCA",
+    "name": "Metrolist California"
+  },
+  {
+    "state": "CA",
+    "id": "NNRMLS",
+    "name": "Northern Nevada Regional MLS"
+  },
+  {
+    "state": "CA",
+    "id": "PSRAR",
+    "name": "Palm Springs AOR"
+  },
+  {
+    "state": "CA",
+    "id": "SAOR",
+    "name": "Siskiyou Association of REALTORS"
+  },
+  {
+    "state": "CA",
+    "id": "SBRMLS",
+    "name": "Santa Barbara MLS"
+  },
+  {
+    "state": "CA",
+    "id": "SDMLS",
+    "name": "San Diego MLS"
+  },
+  {
+    "state": "CA",
+    "id": "SFAR",
+    "name": "San Francisco Assoc. of Realtors"
+  },
+  {
+    "state": "CA",
+    "id": "TCMLS",
+    "name": "Tulare County MLS"
+  },
+  {
+    "state": "CA",
+    "id": "IVRMLS",
+    "name": "Incline Village REALTORS"
+  },
+  {
+    "state": "CA",
+    "id": "HJIMLS",
+    "name": "Home Junction Demo Feed"
+  },
+  {
+    "state": "CA",
+    "id": "ICAOR",
+    "name": "Imperial County Association of Realtors"
+  },
+  {
+    "state": "CA",
+    "id": "SHASTA",
+    "name": "Shasta Association of REALTORS"
+  },
+  {
+    "state": "CA",
+    "id": "STAR",
+    "name": "South Tahoe Association of REALTORS"
+  },
+  {
+    "state": "CO",
+    "id": "IRES",
+    "name": "Information & Real Estate Services (Colorado)"
+  },
+  {
+    "state": "CO",
+    "id": "RGAR",
+    "name": "Royal Gorge AOR"
+  },
+  {
+    "state": "CO",
+    "id": "METROLISTCO",
+    "name": "REColorado"
+  },
+  {
+    "state": "CO",
+    "id": "PPMLS",
+    "name": "Pikes Peak MLS"
+  },
+  {
+    "state": "CO",
+    "id": "PUEBLO",
+    "name": "Pueblo Association of Realtors"
+  },
+  {
+    "state": "FL",
+    "id": "BREVARD",
+    "name": "Brevard MLS (Florida)"
+  },
+  {
+    "state": "FL",
+    "id": "BEAR",
+    "name": "Bonita Springs-Estero Association of REALTORS"
+  },
+  {
+    "state": "FL",
+    "id": "CATRS",
+    "name": "Capital Area Technology and REALTOR Services"
+  },
+  {
+    "state": "FL",
+    "id": "ECAR",
+    "name": "Emerald Coast Association of REALTORS"
+  },
+  {
+    "state": "FL",
+    "id": "DAYTONA",
+    "name": "Daytona County MLS"
+  },
+  {
+    "state": "FL",
+    "id": "FGCMLS",
+    "name": "Florida Gulf Coast MLS"
+  },
+  {
+    "state": "FL",
+    "id": "GFLR",
+    "name": "Greater Fort Lauderdale"
+  },
+  {
+    "state": "FL",
+    "id": "MFRMLS",
+    "name": "Mid Florida Realty MLS"
+  },
+  {
+    "state": "FL",
+    "id": "MMMLS",
+    "name": "Miami Mls"
+  },
+  {
+    "state": "FL",
+    "id": "NABOR",
+    "name": "Naples Area Board of Realtors"
+  },
+  {
+    "state": "FL",
+    "id": "NSBBOR",
+    "name": "New Smyrna Beach Board of Realtors"
+  },
+  {
+    "state": "FL",
+    "id": "NEFMLS",
+    "name": "North East Florida"
+  },
+  {
+    "state": "FL",
+    "id": "RAPB",
+    "name": "Regional Association of the Palm Beaches"
+  },
+  {
+    "state": "GA",
+    "id": "FMLS",
+    "name": "First MLS IDX feed"
+  },
+  {
+    "state": "GA",
+    "id": "HABOR",
+    "name": "Hinesville Area Board of REALTORS"
+  },
+  {
+    "state": "GA",
+    "id": "AINCAR",
+    "name": "Amelia Island\/Nassau County MLS"
+  },
+  {
+    "state": "IA",
+    "id": "DESMOINES",
+    "name": "Desmoines Iowa"
+  },
+  {
+    "state": "ID",
+    "id": "IMLS",
+    "name": "Intermountain MLS"
+  },
+  {
+    "state": "ID",
+    "id": "SNRMLS",
+    "name": "Snake River MLS"
+  },
+  {
+    "state": "ID - Wasatch Front Regional MLS",
+    "id": "WFRMLS",
+    "name": "Utah"
+  },
+  {
+    "state": "IL",
+    "id": "RAARMLS",
+    "name": "Rockford Illinois MLS"
+  },
+  {
+    "state": "IL",
+    "id": "MRED",
+    "name": "Midwest Real Estate Data"
+  },
+  {
+    "state": "IL",
+    "id": "FREEPORT",
+    "name": "Freeport, Illinois MLS"
+  },
+  {
+    "state": "IL",
+    "id": "PEORIA",
+    "name": "Peoria Area Association of Realtors"
+  },
+  {
+    "state": "IN",
+    "id": "IRMLS",
+    "name": "Indiana Regional MLS"
+  },
+  {
+    "state": "IN",
+    "id": "MIBOR",
+    "name": "Metropolitan Indianapolis Board of Realtors"
+  },
+  {
+    "state": "KS",
+    "id": "HEARTLAND",
+    "name": "Heartland MLS, Kansas City Mo"
+  },
+  {
+    "state": "KY",
+    "id": "LEX",
+    "name": "Lexington-Bluegrass Association of Realtors"
+  },
+  {
+    "state": "KY",
+    "id": "GLARMLS",
+    "name": "Greater Louisville Association of Realtors"
+  },
+  {
+    "state": "KY",
+    "id": "WKRMLS",
+    "name": "Western Kentucky Regional MLS"
+  },
+  {
+    "state": "KY",
+    "id": "NKMLS",
+    "name": "Northern Kentucky MLS"
+  },
+  {
+    "state": "LA",
+    "id": "GBRMLS",
+    "name": "Greater Baton Rouge MLS"
+  },
+  {
+    "state": "LA",
+    "id": "GSREIN",
+    "name": "Gulf South RE Information Network"
+  },
+  {
+    "state": "LA",
+    "id": "SWLAR",
+    "name": "Southwest Louisiana AOR"
+  },
+  {
+    "state": "MA",
+    "id": "RISMLS",
+    "name": "Rhode Island State MLS"
+  },
+  {
+    "state": "MD",
+    "id": "BRIGHT",
+    "name": "BrightMLS"
+  },
+  {
+    "state": "MI",
+    "id": "AAABOR",
+    "name": "Ann Arbor Area Board of Realtors"
+  },
+  {
+    "state": "MI",
+    "id": "MIMLS",
+    "name": "Michigan Multiple Listing Service (MiRealSource)"
+  },
+  {
+    "state": "MI",
+    "id": "REALCOMP",
+    "name": "Realcomp II Ltd. (Michigan)"
+  },
+  {
+    "state": "MI",
+    "id": "SWMRIC",
+    "name": "MichRIC MLS"
+  },
+  {
+    "state": "MN",
+    "id": "RASE",
+    "name": "Sioux Empire (South Dakota)"
+  },
+  {
+    "state": "MO",
+    "id": "MARIS",
+    "name": "Mid America Regional Information Systems"
+  },
+  {
+    "state": "MO",
+    "id": "SOMO",
+    "name": "Southern Missouri Regional MLS"
+  },
+  {
+    "state": "NC",
+    "id": "TRIANGLEBLOCK",
+    "name": "Triangle MLS (Block Realty)"
+  },
+  {
+    "state": "NC",
+    "id": "FAOR",
+    "name": "Fayetteville Association of REALTORS"
+  },
+  {
+    "state": "NC",
+    "id": "CMLS",
+    "name": "Carolina MLS (Charlotte, NC)"
+  },
+  {
+    "state": "NC",
+    "id": "GAMLS",
+    "name": "Georgia MLS IDX"
+  },
+  {
+    "state": "NC",
+    "id": "GGAR",
+    "name": "Greater Greenville, SC AOR"
+  },
+  {
+    "state": "NC",
+    "id": "NCRMLS",
+    "name": "North Carolina Regional MLS"
+  },
+  {
+    "state": "NC",
+    "id": "SPAR",
+    "name": "Spartanburg Association of Realtors"
+  },
+  {
+    "state": "NC",
+    "id": "TRIAD",
+    "name": "Triad MLS (Central North Carolina)"
+  },
+  {
+    "state": "NC",
+    "id": "TRIANGLE",
+    "name": "Triangle MLS"
+  },
+  {
+    "state": "NH",
+    "id": "MLSPIN",
+    "name": "MLS Property Information Network"
+  },
+  {
+    "state": "NH",
+    "id": "PINCOM",
+    "name": "MLSPIN Commercial"
+  },
+  {
+    "state": "NJ",
+    "id": "NJMLS",
+    "name": "New Jersey MLS"
+  },
+  {
+    "state": "NJ",
+    "id": "CJMLS",
+    "name": "Central Jersey MLS"
+  },
+  {
+    "state": "NJ",
+    "id": "HUDSON",
+    "name": "Hudson County MLS"
+  },
+  {
+    "state": "NJ",
+    "id": "MORMLS",
+    "name": "Monmouth Ocean Regional MLS"
+  },
+  {
+    "state": "NM",
+    "id": "TAOS",
+    "name": "Taos County MLS"
+  },
+  {
+    "state": "NM",
+    "id": "GEPAR",
+    "name": "Greater El Paso Association of REALTORS"
+  },
+  {
+    "state": "NM",
+    "id": "SANTAFE",
+    "name": "Santa Fe Association of Realtors"
+  },
+  {
+    "state": "NM",
+    "id": "SWMLS",
+    "name": "Southwest MLS"
+  },
+  {
+    "state": "NY",
+    "id": "ENYRMLS",
+    "name": "Eastern New York Regional MLS"
+  },
+  {
+    "state": "NY",
+    "id": "GRAR",
+    "name": "Greater Rochester Association of REALTORS"
+  },
+  {
+    "state": "NY",
+    "id": "GSMLS",
+    "name": "Garden State MLS"
+  },
+  {
+    "state": "NY",
+    "id": "NYSMLS",
+    "name": "New York State MLS"
+  },
+  {
+    "state": "NY",
+    "id": "ONEKEY",
+    "name": "OneKey MLS (Hudson\/Long Island)"
+  },
+  {
+    "state": "NY",
+    "id": "SMART",
+    "name": "SmartMLS of Connecticut"
+  },
+  {
+    "state": "OH",
+    "id": "NORIS",
+    "name": "Northwest Ohio RIS"
+  },
+  {
+    "state": "OH",
+    "id": "YESMLS",
+    "name": "Yes-MLS"
+  },
+  {
+    "state": "OH",
+    "id": "CBRRETS",
+    "name": "Columbus Board of Realtors"
+  },
+  {
+    "state": "OH",
+    "id": "WRIST",
+    "name": "Western Regional Information Systems and Technology"
+  },
+  {
+    "state": "OH",
+    "id": "DABR",
+    "name": "Dayton Area Board of REALTORS"
+  },
+  {
+    "state": "OH",
+    "id": "MLSGC",
+    "name": "MLS of Greater Cincinnati"
+  },
+  {
+    "state": "OK",
+    "id": "LBOR",
+    "name": "Lawton Board of REALTORS"
+  },
+  {
+    "state": "OK",
+    "id": "OKCMLS",
+    "name": "Oklahoma City MLS"
+  },
+  {
+    "state": "OR",
+    "id": "COAR",
+    "name": "Central Oregon Association of Realtors"
+  },
+  {
+    "state": "OR",
+    "id": "MCAOR",
+    "name": "Mountain Central (Idaho) AOR"
+  },
+  {
+    "state": "OR",
+    "id": "LCMLS",
+    "name": "Lincoln County MLS"
+  },
+  {
+    "state": "OR",
+    "id": "RMLS",
+    "name": "Portland Oregon Regional MLS"
+  },
+  {
+    "state": "OR",
+    "id": "WVMLS",
+    "name": "Willamette Valley MLS"
+  },
+  {
+    "state": "PA",
+    "id": "WPML",
+    "name": "West Penn Multi-List, Inc."
+  },
+  {
+    "state": "SC",
+    "id": "CSCMLS",
+    "name": "Columbia, SC MLS"
+  },
+  {
+    "state": "SC",
+    "id": "CTARCOM",
+    "name": "Charleston\/Trident Commercial"
+  },
+  {
+    "state": "SC",
+    "id": "CTARMLS",
+    "name": "Charleston\/Trident MLS"
+  },
+  {
+    "state": "TN",
+    "id": "GSMAOR",
+    "name": "Great Smoky Mountains AOR"
+  },
+  {
+    "state": "TN",
+    "id": "KAARRETS",
+    "name": "Knoxville Area Association of Realtors"
+  },
+  {
+    "state": "TN",
+    "id": "MAAR",
+    "name": "Memphis Area Association of REALTORS"
+  },
+  {
+    "state": "TN",
+    "id": "MTRMLS",
+    "name": "RealTracs Middle Tenessee MLS"
+  },
+  {
+    "state": "TX",
+    "id": "LUBAR",
+    "name": "Lubbock County AOR"
+  },
+  {
+    "state": "TX",
+    "id": "TXCCMLS",
+    "name": "Corpus Christi Texas MLS"
+  },
+  {
+    "state": "TX",
+    "id": "ACTRIS",
+    "name": "Austin Board of Realtors"
+  },
+  {
+    "state": "TX",
+    "id": "AMARILLO",
+    "name": "Amarillo AOR"
+  },
+  {
+    "state": "TX",
+    "id": "CHCBR",
+    "name": "Central Hill Country Board of REALTORS"
+  },
+  {
+    "state": "TX",
+    "id": "CTXMLS",
+    "name": "Central Texas MLS"
+  },
+  {
+    "state": "TX",
+    "id": "HARMLS",
+    "name": "Houston MLS"
+  },
+  {
+    "state": "TX",
+    "id": "LAAR",
+    "name": "Longview Area Association of Realtors"
+  },
+  {
+    "state": "TX",
+    "id": "NTREIS",
+    "name": "North Texas Real Estate Information Systems"
+  },
+  {
+    "state": "TX",
+    "id": "SABOR",
+    "name": "San Antonio Board of Realtors"
+  },
+  {
+    "state": "TX",
+    "id": "PERMIAN",
+    "name": "Permian Basin Board of REALTORS"
+  },
+  {
+    "state": "TX",
+    "id": "WACO",
+    "name": "Waco Association of REALTORS"
+  },
+  {
+    "state": "TX",
+    "id": "TYLERTX",
+    "name": "Tyler County, Texas"
+  },
+  {
+    "state": "TX",
+    "id": "BCBR",
+    "name": "Brazoria County Board of REALTORS"
+  },
+  {
+    "state": "UT",
+    "id": "PCBR",
+    "name": "Park City Board of REALTORS"
+  },
+  {
+    "state": "UT",
+    "id": "WCBR",
+    "name": "Washington County (Utah) Board of Realtors"
+  },
+  {
+    "state": "VA",
+    "id": "LBVR",
+    "name": "Lexington-Buena Vista-Rockbridge AOR"
+  },
+  {
+    "state": "VA",
+    "id": "CAARMLS",
+    "name": "Charlottesville Area Association of Realtors"
+  },
+  {
+    "state": "VA",
+    "id": "CVRMLS",
+    "name": "Central Virginia Regional"
+  },
+  {
+    "state": "VA",
+    "id": "GAARMLS",
+    "name": "Greater Augusta Association of Realtors (VA)"
+  },
+  {
+    "state": "VT",
+    "id": "NNEREN",
+    "name": "Northern New England Real Estate Network"
+  },
+  {
+    "state": "WA",
+    "id": "SARMLS",
+    "name": "Selkirk Association of REALTORS"
+  },
+  {
+    "state": "WA",
+    "id": "NWMLS",
+    "name": "Northwest MLS"
+  },
+  {
+    "state": "WA",
+    "id": "PACMLS",
+    "name": "Pacific Regional MLS"
+  },
+  {
+    "state": "WI",
+    "id": "SCWMLS",
+    "name": "South Central WI MLS"
+  },
+  {
+    "state": "WI",
+    "id": "MLSWIS",
+    "name": "Metro MLS Wisconsin"
+  },
+  {
+    "state": "WI",
+    "id": "NORTHSTAR",
+    "name": "Northstar MLS Minneapolis"
+  },
+  {
+    "state": "WY",
+    "id": "BILLINGS",
+    "name": "Billings Association of Realtors"
+  }
+]

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="Service Plan Card.svg"
+   id="svg34"
+   version="1.1"
+   viewBox="0 0 221 274.12042"
+   height="274.12042"
+   width="221">
+  <metadata
+     id="metadata40">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs38" />
+  <sodipodi:namedview
+     inkscape:current-layer="svg34"
+     inkscape:window-maximized="1"
+     inkscape:window-y="0"
+     inkscape:window-x="1920"
+     inkscape:cy="97.205312"
+     inkscape:cx="101.49642"
+     inkscape:zoom="2.6656051"
+     showgrid="false"
+     id="namedview36"
+     inkscape:window-height="1025"
+     inkscape:window-width="1892"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
+  <g
+     transform="translate(2,2)"
+     data-name="Service Plan Card"
+     id="Service_Plan_Card">
+    <g
+       stroke-miterlimit="10"
+       fill="rgba(0,115,170,0.1)"
+       id="BG">
+      <path
+         id="path2"
+         stroke="none"
+         d="m 108.5,271.06021 -0.33221,-0.117 L -0.3322143,232.72815 -1,232.49294 V 231.78493 0 -1 h 1 217 1 v 1 231.78493 0.70801 l -0.66779,0.23521 -108.5,38.21506 z" />
+      <path
+         id="path4"
+         fill="#84b8d1"
+         stroke="none"
+         d="M 0,0 V 231.78493 L 108.5,270 217,231.78493 V 0 H 0 m -2,-2 h 2 217 2 v 2 231.78493 1.416 l -1.33557,0.47041 -108.50001,38.21507 -0.66442,0.23401 -0.66442,-0.23401 L -0.66442871,233.67134 -2,233.20093 v -1.416 V 0 Z" />
+    </g>
+    <rect
+       y="0"
+       x="0"
+       fill="none"
+       transform="translate(3,99)"
+       height="97"
+       width="211"
+       id="Frame" />
+    <path
+       fill="rgba(255,255,255,0.38)"
+       transform="translate(8.83,193.096)"
+       d="M 0,-5.486 100.412,32.3 199.877,-5.486 V 32.3 L 100.412,54.915 0,32.3 Z"
+       data-name="BG"
+       id="BG-4" />
+  </g>
+</svg>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="Plugin Badge.svg"
+   id="svg20"
+   version="1.1"
+   viewBox="0 0 221 231.236"
+   height="231.236"
+   width="221">
+  <metadata
+     id="metadata26">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs24" />
+  <sodipodi:namedview
+     inkscape:current-layer="Plugin_Badge"
+     inkscape:window-maximized="1"
+     inkscape:window-y="0"
+     inkscape:window-x="1920"
+     inkscape:cy="196.87037"
+     inkscape:cx="110.5"
+     inkscape:zoom="3.6196787"
+     showgrid="false"
+     id="namedview22"
+     inkscape:window-height="1025"
+     inkscape:window-width="1892"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
+  <g
+     transform="translate(2 2)"
+     data-name="Plugin Badge"
+     id="Plugin_Badge">
+    <g
+       stroke-miterlimit="10"
+       fill="rgba(0,115,170,0.1)"
+       id="BG">
+      <path
+         id="path2"
+         stroke="none"
+         d="M 108.5 228.1932067871094 L 108.2158813476562 228.1090240478516 L -0.2841176390647888 195.9588012695312 L -1 195.7466735839844 L -1 195 L -1 1.37149584134022e-06 L -1 -0.9999986290931702 L 0 -0.9999986290931702 L 217 -0.9999986290931702 L 218 -0.9999986290931702 L 218 1.37149584134022e-06 L 218 195 L 218 195.7466735839844 L 217.2841186523438 195.9588012695312 L 108.7841186523438 228.1090240478516 L 108.5 228.1932067871094 Z" />
+      <path
+         id="path4"
+         fill="#84b8d1"
+         stroke="none"
+         d="M 0 -1.52587890625e-05 L 0 194.9999847412109 L 108.5 227.1502227783203 L 217 194.9999847412109 L 217 -1.52587890625e-05 L 0 -1.52587890625e-05 M -2 -2.000015258789062 L 0 -2.000015258789062 L 217 -2.000015258789062 L 219 -2.000015258789062 L 219 -1.52587890625e-05 L 219 194.9999847412109 L 219 196.4933166503906 L 217.5682067871094 196.9175872802734 L 109.0681991577148 229.0678253173828 L 108.5 229.2361907958984 L 107.9318008422852 229.0678253173828 L -0.568206787109375 196.9175872802734 L -2 196.4933166503906 L -2 194.9999847412109 L -2 -1.52587890625e-05 L -2 -2.000015258789062 Z" />
+    </g>
+    <g
+       transform="translate(41 162)"
+       id="Details">
+      <text
+         font-family="Roboto-Regular, Roboto"
+         font-size="16px"
+         fill="rgba(20,101,147,0.82)"
+         transform="translate(-37,-11)"
+         data-name="SEO Friendly Indexab"
+         id="SEO_Friendly_Indexab"><tspan
+           id="tspan10"
+           y="38"
+           x="40.242001" /></text>
+    </g>
+  </g>
+</svg>

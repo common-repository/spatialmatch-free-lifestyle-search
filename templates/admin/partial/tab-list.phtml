@@ -1,0 +1,12 @@
+<div class="hji-spatialmatch-idx__tab-list nav">
+    <?php
+    foreach ($tabs as $tab) :
+        $counter = '';
+
+        if (isset($counters[$tab['slug']])) {
+            $counter = sprintf(' [%s]', $counters[$tab['slug']]);
+        }
+    ?>
+    <a href="<?php echo $pluginPageUrl; ?>&action=<?php echo $tab['slug']; ?>" class="nav-tab <?php echo $tab['class']; ?>" id="hji-spm-idx__<?php echo $tab['slug']; ?>" aria-controls="hji-spm-idx__<?php echo $tab['slug'] . '-tp'; ?>"><?php echo $tab['title'] . $counter; ?></a>
+    <?php endforeach; ?>
+</div>

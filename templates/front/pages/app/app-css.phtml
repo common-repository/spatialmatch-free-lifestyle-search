@@ -1,0 +1,155 @@
+<?php
+/** @var \SpatialMatchIdx\models\ColorSettingsModel $colorSettings */
+?>
+
+<style>
+    body {
+        --primary-color: <?php echo $colorSettings->primary_color ?>;
+        --primary-hover: <?php echo $colorSettings->hover_bg ?>;
+        --primary-contrast: <?php echo $colorSettings->primary_link ?>;
+        --primary-link: <?php echo $colorSettings->primary_link ?>;
+        --primary-font: <?php echo $colorSettings->primary_font ?>;
+        --secondary-color: <?php echo $colorSettings->secondary_color ?>;
+        --marker-active-color: <?php echo $colorSettings->marker_active ?>;
+        --marker-other-color: <?php echo $colorSettings->marker_other ?>;
+        --menu-bg: <?php echo $colorSettings->menu_bg ?>;
+        --menu-font: <?php echo $colorSettings->menu_font ?>;
+        --secondary-font: <?php echo $colorSettings->secondary_font ?>;
+        --secondary-link: <?php echo $colorSettings->secondary_link ?>;
+        --hover: <?php echo $colorSettings->hover_bg ?>;
+        --hover-font: <?php echo $colorSettings->hover_font ?>;
+    }
+
+    body, .site-wrapper {
+        padding: 0!important;
+        margin: 0;
+        display: flex;
+        flex-flow: column;
+        height: 100%;
+    }
+    #header {
+        background: #0288D1;
+        color: white;
+    }
+    .site-logo {
+        max-width: 200px;
+        max-height: 70px;
+    }
+
+    body #hj-app {
+        position: relative;
+        -webkit-box-flex: 0;
+        -ms-flex-positive: 0;
+        flex-grow: 0;
+        -ms-flex-negative: 1;
+        flex-shrink: 1;
+        -ms-flex-preferred-size: auto;
+        flex-basis: auto;
+    }
+
+    body #hj-app .footer-compliance.mobile-footer {
+        position: absolute !important;
+    }
+
+    body #hj-app .toast-container.toast-bottom-right,
+    body #hj-app .toast-container.toast-top-right{
+        z-index: 999999999!important;
+    }
+    body #hj-app .toast-container>div {
+        -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        opacity: 1;
+        filter: alpha(opacity=100);
+        box-shadow: 0 0 12px #000;
+        border-radius: 2px;
+    }
+    body #hj-app .toast-title {
+        font-weight: 200;
+        font-size: 1.2em;
+    }
+    body #hj-app .toast-message {
+        font-weight: 200;
+        font-size: 1em;
+    }
+    .crm-onbehalf #header {
+        background: #fff;
+        color: #616161;
+        border-bottom: 1px solid #E0E0E0;
+        font-family: 'Roboto', sans-serif;
+        height: 55px;
+        max-height: 55px;
+    }
+    @keyframes slideInFromLeft {
+        0% {
+            transform: translateX(-100%);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+    .crm-onbehalf .crm-cname {
+        font-size: 2em;
+        font-weight: 200;
+        padding: 0.8em 0.4em;
+        animation: 2s ease-out 0s 1 slideInFromLeft;
+    }
+
+    .crm-onbehalf .btn-email-search {
+        animation: 0.5s ease-out 0s 1 slideInFromLeft;
+        color: #fff;
+        background-color: #0288d1;
+        border-color: #cfcfcf;
+        text-shadow: 1px 1px 1px #666;
+        text-transform: uppercase;
+        display: inline-block;
+        margin-bottom: 0;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        text-align: center;
+        vertical-align: middle;
+        touch-action: manipulation;
+        cursor: pointer;
+        background-image: none;
+        border: 1px solid transparent;
+        white-space: nowrap;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        border-radius: 0;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        border: none!important;
+        background-clip: padding-box;
+        box-shadow: 0 1px 4px -1px rgba(0,0,0,.298039);
+    }
+
+    #footer {
+        -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        -ms-flex-negative: 1;
+        flex-shrink: 1;
+        -ms-flex-preferred-size: auto;
+        flex-basis: auto;
+    }
+
+    #footer .hji-map-search-footer-wrapper {
+        padding: 10px 0;
+        background-color: #0288d1;
+    }
+
+    .crm-onbehalf #header .fa {
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        padding-right: 10px;
+    }
+
+    .crm-onbehalf #header .fa-envelope-o:before {
+        content: "\f003";
+    }
+</style>

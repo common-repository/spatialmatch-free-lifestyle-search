@@ -1,0 +1,72 @@
+<?php
+
+use SpatialMatchIdx\core\helpers\URLHelper;
+
+$dateFormat = get_option( 'date_format' );
+$timeFormat = get_option( 'time_format' );
+$leadsListUrl = URLHelper::getLinkWithParams(['page']);
+?>
+
+<div id="hji-spm-idx__<?php echo $context['slug'] ?>-tp" aria-labelledby="<?php  ?>" class="hji-spm-idx__tab-panel <?php echo $context['class']; ?>">
+    <?php if ('edit' === $context['data']['type']):?>
+        <h3>Edit Lead "<?php echo $context['data']['lead']['name']; ?>"</h3>
+        <form method="post" action="<?php echo URLHelper::getLinkWithParams([
+            'page',
+            'lead_id',
+        ], [
+            'action' => 'update-lead',
+        ]);?>">
+            <input type="hidden" name="user[id]" value="<?php echo $_GET['lead_id']?>">
+            <input type="hidden" name="_referer" value="<?php echo $_REQUEST['_referer'] ?? $_SERVER['HTTP_REFERER']?>">
+            <?php wp_nonce_field(); ?>
+            <table class="form-table">
+                <tbody>
+                    <tr>
+                        <th scope="row"><label>Name</label></th>
+                        <td><input type="text" name="user[name]" value="<?php echo $context['data']['lead']['name']; ?>" class="regular-text"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label>Email</label></th>
+                        <td><input type="text" name="user[email]" value="<?php echo $context['data']['lead']['email']; ?>" class="regular-text disabled" readonly"=""></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label>New Email</label></th>
+                        <td><input type="text" name="user[new-email]" value="" class="regular-text"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label>Phone</label></th>
+                        <td><input type="text" name="user[phone]" value="<?php echo $context['data']['lead']['phone']; ?>" class="regular-text"></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">
+                            <input type="submit" class="button button-primary" value="Save Changes">
+                            <input type="button" class="button button-cancel" onclick='LeadsCRUD.removeLead(<?php echo sprintf('"%s", "%s", "%s", "%s"', $_GET['lead_id'], $context['data']['lead']['name'], $context['data']['lead']['email'], $leadsListUrl); ?>)' value="Delete Lead">
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    <?php else: ?>
+        <h3><?php echo $context['data']['lead']['name']; ?>
+            <a href="<?php echo URLHelper::getLinkWithParams([
+                'page',
+                'lead_id',
+                'action',
+            ], [
+                'type' => 'edit',
+            ]);?>" class="add-new-h2">
+                Edit User
+            </a>
+        </h3>
+        <p><strong>Name:</strong> <?php echo $context['data']['lead']['name']; ?></p>
+        <p><strong>Email:</strong> <?php echo $context['data']['lead']['email']; ?></p>
+        <?php if (!empty($data['data']['lead']['phone'])): ?>
+        <p><strong>Phone:</strong> <?php echo $context['data']['lead']['phone']; ?></p>
+        <?php endif; ?>
+        <p><strong>Registered:</strong> <?php echo date("{$dateFormat} {$timeFormat}", $context['data']['lead']['createdDate']); ?></p>
+        <?php if (isset($context['data']['lead']['lastActive'])): ?>
+            <p><strong>Last Active:</strong> <?php echo date("{$dateFormat} {$timeFormat}", $context['data']['lead']['lastActive']); ?></p>
+        <?php endif; ?>
+<!--        <p><strong>Source:</strong> </p>-->
+    <?php endif; ?>
+</div>

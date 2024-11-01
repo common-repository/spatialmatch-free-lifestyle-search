@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-US" style="height: 100%">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title><?php echo apply_filters('ridx_map_search_page_title', 'Property Search') ?></title>
+        <?php do_action('hji_map_search_head'); ?>
+        <?php wp_site_icon(); ?>
+        <?php echo $appStyle; ?>
+    </head>
+    <body <?php do_action('hji_map_search_body_class'); ?>>
+        <div class="site-wrapper" data-init="site-wrapper">
+            <div id="header">
+                <?php do_action('hji_map_search_header'); ?>
+            </div>
+
+            <div id="map-search"></div>
+
+            <?php
+            if (defined('SPM_APPLICATION_URL') && WP_DEBUG === true) {
+                $appUrl = SPM_APPLICATION_URL;
+            } else {
+                $appUrl = 'https://sm.homejunction.com/app/js/bootstrap.js?callback=hj_search_load_callback&t='  . uniqid('', true);
+            }
+            ?>
+            <script async src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.6.1/clipboard.min.js"></script>
+            <script async src="<?php echo $appUrl; ?>"></script>
+
+            <?php echo $appScript; ?>
+
+            <div id="footer">
+                <?php do_action('hji_map_search_footer'); ?>
+            </div>
+        </div>
+    </body>
+</html>
+

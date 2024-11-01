@@ -1,0 +1,82 @@
+<div id="hji-spm-idx__<?php echo $context['slug']; ?>-tp" aria-labelledby="<?php echo $context['slug']; ?>" class="hji-spm-idx__tab-panel <?php echo $context['class']; ?>">
+    <form id="hji-spm-idx__form-<?php echo $context['slug']; ?>" action="<?php echo home_url();?>/wp-admin/admin.php?page=hji-spatialmatch-idx&action=save-map-settings" method="post">
+        <?php wp_nonce_field(); ?>
+        <div id="hji-spm-idx__google-api-key">
+            <h3>Map Settings</h3>
+            <table class="form-table">
+                <tbody>
+                <tr>
+                    <th>
+                        <label for="hji-spm-idx__google-api-key">
+                            Google API Key
+                        </label>
+                    </th>
+                    <td>
+                        <input class="regular-text" type="text" id="hji-spm-idx__google-api-key" name="<?php echo $context['slug']; ?>[google_api_key]"  value="<?php echo $context['data']['form']->getValue('google_api_key'); ?>" placeholder="Enter Google API Key"/>
+                        <?php $context['data']['form']->showError('google_api_key'); ?>
+                        <p class="description">Should support Maps JS API, Maps Embed API, Geocoding API. If not provided, a default key will be used with enabled call throttle.</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="map-search-map-centring">
+            <h3>Map Centering</h3>
+            <p class="description">
+                By default map centers by most populated city in the market. You can customize map positioning by specifying center coordinates and zoom level.
+            </p>
+            <table class="form-table ridx-map-search-menu-settings"><tbody>
+                <tr>
+                    <th scope="row"><label>Center Coordinates</label></th>
+                    <td>
+                        <div style="display: inline-block; padding: 0 20px 0 0;">
+                            <label for="hji-spm-id__map-center-lat">Latitude</label>
+                            <input id="hji-spm-id__map-center-lat" type="text" name="<?php echo $context['slug']; ?>[latitude]" value="<?php echo $context['data']['form']->getValue('latitude'); ?>" style="display: block;min-width:250px; max-width:350px;" placeholder="Latitude"/>
+                            <?php $context['data']['form']->showError('latitude'); ?>
+                        </div>
+                        <div style="display: inline-block; padding: 0">
+                            <label for="hji-spm-idx__map-center-lng">Longitude</label>
+                            <input id="hji-spm-idx__map-center-lng" type="text" name="<?php echo $context['slug']; ?>[longitude]" value="<?php echo $context['data']['form']->getValue('longitude'); ?>" style="display: block;min-width:250px; max-width:350px;" placeholder="Longitude"/>
+                            <?php $context['data']['form']->showError('longitude'); ?>
+                        </div>
+                    </td></tr>
+                <tr>
+                    <th scope="row">
+                        <label for="map-search-markets-by-area">Market</label>
+                    </th>
+                    <td>
+                        <select id="map-search-markets-by-area" name="<?php echo $context['slug']; ?>[market]" >
+                            <?php
+                            if (!empty($context['data']['markets'])) {
+                                if (count($context['data']['markets']) > 1) {
+                                    echo '<option value=""></option>';
+                                }
+
+                                foreach ($context['data']['markets'] as $market) {
+                                    $selected = ($market['id'] === $context['data']['form']->getValue('market')) ? 'selected' : '';
+                                    echo sprintf(
+                                        '<option %s value="%s">%s</option>',
+                                        $selected,
+                                        $market['id'],
+                                        strtoupper($market['id'])
+                                    );
+                                }
+                            }
+                            ?>
+                        </select>
+                        <?php $context['data']['form']->showError('market'); ?>
+                    </td></tr>
+                <tr>
+                    <th scope="row">
+                        <label for="hji-spm-idx__zoom">Map Zoom</label>
+                    </th>
+                    <td>
+                        <input id="hji-spm-idx__zoom" type="number" min="1" max="30" name="<?php echo $context['slug']; ?>[zoom]" value="<?php echo $context['data']['form']->getValue('zoom'); ?>" />
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <button type="submit" class="button button-primary">Save Changes</button>
+    </form>
+</div>

@@ -1,0 +1,233 @@
+<div id="hji-spm-idx__<?php echo $context['slug'] ?>-tp" aria-labelledby="<?php echo $context['slug']; ?>" class="hji-spm-idx__tab-panel <?php echo $context['class']; ?>">
+    <form id="hji-spm-idx__form-<?php echo $context['slug']; ?>" method="post" action="<?php echo home_url('wp-admin/admin.php?page=hji-spatialmatch-idx&action=save-general-settings');?>">
+        <?php wp_nonce_field(); ?>
+        <h3>General Settings</h3>
+        <table class="form-table">
+            <tbody>
+            <tr>
+                <th>
+                    <label for="hji-spm-idx__page-slug">IDX Page Slug:</label>
+                </th>
+                <td>
+                    <?php
+                    $spmIdxLink = home_url($context['data']['form']->getValue('slug'));
+                    ?>
+                    <input
+                        <?php $context['data']['form']->showErrorAttributes('slug', 'hji-spm-idx__page-slug'); ?>
+                        class="regular-text hji-validate <?php $context['data']['form']->showClassIfError('slug'); ?>"
+                        id="hji-spm-idx__page-slug"
+                        name="<?php echo $context['slug']; ?>[slug]"
+                        type="text" value="<?php echo $context['data']['form']->getValue('slug'); ?>"
+                    >
+                    <?php $context['data']['form']->showError('slug', 'hji-spm-idx__page-slug'); ?>
+                    <p class="description">Access IDX at <a href="<?php echo $spmIdxLink; ?>" target="_blank"><?php echo $spmIdxLink; ?></a></p>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="hji-spm-idx__leads-email">Leads Email:</label>
+                </th>
+                <td>
+                    <div>
+                        <input
+                                class="regular-text emailinput ei"
+                                id="hji-spm-idx__leads-email"
+                                name="<?php echo $context['slug']; ?>[leads_email]"
+                                type="text"
+                                value="<?php  echo $context['data']['form']->getValue('leads_email'); ?>"
+                        >
+                    </div>
+                    <p class="description">
+                        Leads will be forwarded to the addresses listed here.
+                    </p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <h3>User Registration Settings</h3>
+        <table class="form-table">
+            <tr>
+                <th>
+                    <label for="hji-spm-idx__user-registration-require-phone">Phone Number:</label>
+                </th>
+                <td>
+                    <?php $checked = '' ?>
+                    <?php if (!empty($context['data']['form']->getValue('require_user_registration_phone_number'))) {
+                        $checked = 'checked="checked"';
+                    }
+                    ?>
+                    <input
+                        type="checkbox"
+                        name="<?php echo $context['slug']; ?>[require_user_registration_phone_number]"
+                        id="hji-spm-idx__user-registration-require-phone"
+                        value="1"
+                        <?php echo $checked; ?>
+                    >
+                    Require user phone number
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="hji-spm-idx__require_user_registration_phone_number">Prompt to Register:</label>
+                </th>
+                <td>
+                    <?php $checked = '' ?>
+                    <?php if (!empty($context['data']['form']->getValue('require_user_registration'))) {
+                        $checked = 'checked="checked"';
+                    }
+                    ?>
+                    <input type="checkbox" name="<?php echo $context['slug']; ?>[require_user_registration]" id="hji-spm-idx__require_user_registration_phone_number" value="1" <?php echo $checked; ?>>&nbsp;After
+                    <label><input type="number" step="1" min="3" class="small-text" name="<?php echo $context['slug']; ?>[prompt_register_count]" id="hji-spm-idx__prompt-register-count" value="<?php echo $context['data']['form']->getValue('prompt_register_count'); ?>">&nbsp;Listing(s) Viewed</label><br><br>
+                    <?php $checked = '' ?>
+                    <?php if (!empty($context['data']['form']->getValue('allow_opt_out'))) {
+                        $checked = 'checked="checked"';
+                    }
+                    ?>
+                    <label><input type="checkbox" name="<?php echo $context['slug']; ?>[allow_opt_out]" id="hji-spm-idx__allow_opt_out" value="1" <?php echo $checked; ?>>&nbsp;Allow to opt-out</label>
+                </td>
+            </tr>
+        </table>
+
+        <h3>Inquiry Form Settings</h3>
+        <table class="form-table">
+            <tr>
+                <th>
+                    <label for="hji-spm-idx__inquiry-form-require-phone">Phone Number:</label>
+                </th>
+                <td>
+                    <?php $checked = '' ?>
+                    <?php if (!empty($context['data']['form']->getValue('inquiry_require_user_phone_number'))) {
+                        $checked = 'checked="checked"';
+                    }
+                    ?>
+                    <input type="checkbox" name="<?php echo $context['slug']; ?>[inquiry_require_user_phone_number]" id="hji-spm-idx__inquiry-form-require-phone" value="1" <?php echo $checked; ?>>Require user phone number
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="hji-spm-idx__agent-name">Agent Name:</label>
+                </th>
+                <td>
+                    <input type="text" class="regular-text" name="<?php echo $context['slug']; ?>[agent_name]" value="<?php echo $context['data']['form']->getValue('agent_name'); ?>" id="hji-spm-idx__agent-name">
+                    <p class="description">
+                        Displayed above the form as person of contact
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="hji-spm-idx__agent-phone">Agent Phone:</label>
+                </th>
+                <td>
+                    <input type="text" class="regular-text" name="<?php echo $context['slug']; ?>[agent_phone]" id="hji-spm-idx__agent-phone" value="<?php echo $context['data']['form']->getValue('agent_phone'); ?>">
+                    <p class="description">
+                        Displayed above the form as contact number
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="hji-spm-idx__company-name">Company Name:</label>
+                </th>
+                <td>
+                    <input type="text" class="regular-text" name="<?php echo $context['slug']; ?>[company_name]" id="hji-spm-idx__company-name" value="<?php echo $context['data']['form']->getValue('company_name'); ?>">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="hji-spm-idx__agent-photo">Agent Photo:</label>
+                </th>
+                <td>
+                    <div class="hji-spm-id__photo-display-block">
+                        <div class="hji-spm-id__photo-display" id="hji-spm-id__photo-display">
+                            <?php if (empty($context['data']['form']->getValue('agent_photo_id'))): ?>
+                                None
+                            <?php else: ?>
+                                <img src="<?php  echo wp_get_attachment_image_url($context['data']['form']->getValue('agent_photo_id'), 'medium'); ?>" >
+                                <a href="" class="hji-spm-idx-photo-remove" data-control="hji-spm-idx__agent-photo"><span class="dashicons dashicons-no"></span></a>
+                            <?php endif; ?>
+                        </div>
+                        <input type="hidden" class="regular-text" name="<?php echo $context['slug']; ?>[agent_photo_id]" id="hji-spm-idx__agent-photo" value="<?php echo $context['data']['form']->getValue('agent_photo_id'); ?>">
+                        <a href="#" class="button button-add-media hji-spm-id__photo-upload-button" data-control="hji-spm-id__photo-display">Upload Photo</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <h3>Site Logo & Navigation</h3>
+        <table class="form-table">
+            <tr>
+                <td colspan="2">
+                    SpatialMatch is a responsive single page application optimized for mobile devices.
+                    To maintain high level of usability and user experience SpatialMatch is using its own template while
+                    embedding you custom logo and primary navigation. If this setup does not satisfy your requirements, refer to
+                    SpatialMatch Help section.
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="hji-spm-idx__site-logo">Site Logo:</label>
+                </th>
+                <td>
+                    <div class="hji-spm-id__photo-display-block">
+                        <div class="hji-spm-id__photo-display" id="hji-spm-id__site-logo-display">
+                            <?php if (empty($context['data']['form']->getValue('site_logo_id'))): ?>
+                                None
+                            <?php else: ?>
+                                <img src="<?php  echo wp_get_attachment_image_url($context['data']['form']->getValue('site_logo_id'), 'medium'); ?>" >
+                                <a href="" class="hji-spm-idx-photo-remove" data-control="hji-spm-idx__site-logo"><span class="dashicons dashicons-no"></span></a>
+                            <?php endif; ?>
+                        </div>
+                        <input type="hidden" name="<?php echo $context['slug']; ?>[site_logo_id]" id="hji-spm-idx__site-logo" value="<?php echo $context['data']['form']->getValue('site_logo_id'); ?>">
+                        <a href="#" class="button button-add-media hji-spm-id__photo-upload-button" data-control="hji-spm-id__site-logo-display">Upload Logo</a>
+                    </div>
+
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="hji-spm-idx__logo-height">Logo Height:</label>
+                </th>
+                <td>
+                    Current height: <span id="hji-spm-idx__logo-height-display"><?php echo $context['data']['form']->getValue('logo_height'); ?></span>px
+                    <div class="hji-spm-idx__site-logo-range-block">
+                        <span class="hji-spm-idx__min-site-logo-height">50px</span>
+                        <input type="range" min="50" max="200" name="<?php echo $context['slug']; ?>[logo_height]" id="hji-spm-idx__logo-height" value="<?php echo $context['data']['form']->getValue('logo_height'); ?>">
+                        <span class="hji-spm-idx__max-site-logo-height">200px</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row"><label for="hji-spm-idx__primary-menu">Navigation:</label></th>
+                <td>
+                    <select id="hji-spm-idx__primary-menu" class="regular-text map-search-menu" name="<?php echo $context['slug']; ?>[menu]" >
+                        <?php
+                        $selected = '';
+                        if (empty($context['data']['menu'])) {
+                            $selected = 'selected="selected"';
+                        }
+                        ?>
+                        <option value="" <?php echo $selected ?> >Select Menu</option>
+
+                        <?php
+                        foreach ($context['data']['menus'] as $menu) {
+                            $selected = '';
+                            if ($menu->slug === $context['data']['form']->getValue('menu')) {
+                                $selected = 'selected="selected"';
+                            }
+
+                            echo '<option value="' . $menu->slug . '" ' . $selected . ' >' . $menu->name . '</option>';
+                        }
+                        ?>
+                    </select>
+                    <p class="description">
+                        Displayed as primary navigation on the IDX page
+                    </p>
+                </td>
+            </tr>
+        </table>
+
+        <button type="submit" class="button button-primary">Save Changes</button>
+    </form>
+</div>
